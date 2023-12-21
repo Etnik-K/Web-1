@@ -1,0 +1,25 @@
+{
+    "users": [
+      {
+        "name": "John",
+        "surname": "Doe",
+        "username": "john_doe",
+        "email": "etnikkelmendi20@gmail.com",
+        "password": "123"
+      },
+      {
+        "name": "Jane",
+        "surname": "Smith",
+        "username": "jane_smith",
+        "email": "jane.smith@example.com",
+        "password": "hashed_password_2"
+      },
+      {
+        "name": "Bob",
+        "surname": "Johnson",
+        "username": "bob_johnson",
+        "email": "bob.johnson@example.com",
+        "password": "hashed_password_3"
+      }
+    ]
+  }
