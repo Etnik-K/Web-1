@@ -12,14 +12,62 @@
     <div id="login-container">
         <form action="" method="get" id="form">
             <h1 id="title">Login Form</h1>
-          <input type="email" name="" id="email" placeholder="Email address">
+            <input type="email" name="" id="email" placeholder="Email address">
             <input type="password" name="" id="password" placeholder="Password">
             <a href="" id="forgot-password">Forgot Password?</a>
-      <div id="end-part"> <a href="profile.html"><input type="button" value="Login" id="button"></a>
-        <p id="last-paragraph">Not a member? <a href="sign-up.html" id="sign-up">Sign up now.</a></p>
-    </div>    
-    </form>
-    <img src="./images/education 1.png" alt="" id="image">
+            <div id="end-part">
+                <input type="button" value="Login" id="button" onclick="validateLogin()">
+                <p id="last-paragraph">Not a member? <a href="sign-up.html" id="sign-up">Sign up now.</a></p>
+            </div>
+        </form>
+        <img src="./images/education 1.png" alt="" id="image">
     </div>
+
+    
+    <script>
+        const usersData = {
+            "users": [
+                {
+                    "name": "John",
+                    "surname": "Doe",
+                    "username": "john_doe",
+                    "email": "etnikkelmendi20@gmail.com",
+                    "password": "123"
+                },
+                {
+                    "name": "Jane",
+                    "surname": "Smith",
+                    "username": "jane_smith",
+                    "email": "jane.smith@example.com",
+                    "password": "hashed_password_2"
+                },
+                {
+                    "name": "Bob",
+                    "surname": "Johnson",
+                    "username": "bob_johnson",
+                    "email": "bob.johnson@example.com",
+                    "password": "hashed_password_3"
+                }
+            ]
+        };
+    
+        function validateLogin() {
+            // Use the variable with the JSON data
+            const emailInput = document.getElementById('email').value;
+            const passwordInput = document.getElementById('password').value;
+    
+            // Check if the entered credentials match any user in the JSON data
+            const user = usersData.users.find(u => u.email === emailInput && u.password === passwordInput);
+    
+            if (user) {
+                
+                // Redirect to the profile page or perform any other action
+                window.location.href = 'profile.html';
+            } else {
+                alert('Invalid email or password');
+            }
+        }
+    </script>
+    
 </body>
 </html>
