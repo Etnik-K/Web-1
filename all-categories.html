@@ -49,7 +49,7 @@
                          </tr>
                         </table>
                     </div></li>
-                    <li><a class="nav-link" href="">Login</a></li>
+                    <li><a class="nav-link" href="login.html">Login</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
         
                 </ul>
@@ -104,15 +104,15 @@
         <div id="footer-container">
             <div id="books">
                 <h1 id="books-title">Books</h1>
-                <a href=""><p class="books-paragraph">Elon Musk</p></a>
-                <a href=""><p class="books-paragraph">Java</p></a>
-                <a href=""><p class="books-paragraph">Artificial Intelligence</p></a>
+                <a href="https://www.amazon.com/Elon-Musk-SpaceX-Fantastic-Future/dp/006230125X"><p class="books-paragraph">Elon Musk</p></a>
+                <a href="https://www.w3schools.com/java/"><p class="books-paragraph">Java</p></a>
+                <a href="https://www.w3schools.com/ai/default.asp"><p class="books-paragraph">Artificial Intelligence</p></a>
             </div>
             <div id="explore">
                 <h1 id="explore-title">Explore</h1>
-               <a href=""><p class="explore-paragraph">About</p></a>
-               <a href=""><p class="explore-paragraph">Overview</p></a>
-               <a href=""><p class="explore-paragraph">Join Us</p></a>
+               <a href="about.html"><p class="explore-paragraph">About</p></a>
+               <a href="home.html"><p class="explore-paragraph">Overview</p></a>
+               <a href="login.html"><p class="explore-paragraph">Join Us</p></a>
             </div>
             <div id="gallery">
                 <h1 id="gallery-title">Gallery</h1>
@@ -131,11 +131,18 @@
                     encourages learning through <br>
                      interactivity and fun. </p>
                       <div id="footer-buttons">
-                    <button class="footer-button" id="contact-button">Contact</button>
+                    <button onclick="goContact()" class="footer-button" id="contact-button">Contact</button>
                     <button class="footer-button" id="help-button">Help</button>
                       </div>       
             </div>
         </div>
         </footer>
+        <script>
+            function goContact() {
+                
+                window.location.href = "contact.html";
+            }
+        </script>
+        
 </body>
 </html>
