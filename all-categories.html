@@ -143,6 +143,117 @@
                 window.location.href = "contact.html";
             }
         </script>
-        
+            
+            <script>
+                //Toggles the visibility of the navigation menu when the hamburger icon is clicked.
+                $(document).ready(function() {
+                    $('.checkbox').click(function() {
+                        $('.menu-items').toggleClass('show');
+                    });
+                });
+            </script>
+<script>
+   // Adds smooth scrolling to navigate to different sections when clicking on navigation links.
+    $(document).ready(function() {
+        $('.nav-link, #logo, #explore-title, #gallery-title, #about-title').on('click', function(event) {
+            if (this.hash !== "") {
+                event.preventDefault();
+                var hash = this.hash;
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 800, function() {
+                    window.location.hash = hash;
+                });
+            }
+        });
+    });
+</script>
+<script>
+    //Highlights the active section in the navigation menu based on the scroll position.
+    $(document).ready(function() {
+        $(window).scroll(function() {
+            var scrollPos = $(document).scrollTop();
+            $('.nav_links a').each(function() {
+                var currLink = $(this);
+                var refElement = $(currLink.attr('href'));
+                if (
+                    refElement.position().top <= scrollPos &&
+                    refElement.position().top + refElement.height() > scrollPos
+                ) {
+                    $('.nav_links a').removeClass('active');
+                    currLink.addClass('active');
+                } else {
+                    currLink.removeClass('active');
+                }
+            });
+        });
+    });
+</script>
+<script>
+   // Adds a hover effect to category images.
+    $(document).ready(function() {
+        $('.category-img').hover(
+            function() {
+                $(this).css('opacity', '0.7');
+            },
+            function() {
+                $(this).css('opacity', '1');
+            }
+        );
+    });
+</script>
+<script>
+    //Adds an accordion effect for the footer sections.
+    $(document).ready(function() {
+        $('.footer-button').click(function() {
+            $(this).closest('div').siblings().find('.about-paragraph').slideUp();
+            $(this).siblings('.about-paragraph').slideToggle();
+        });
+    });
+</script>
+<script>
+    //Use jQuery effects to hide and show elements. For example, you might want to hide the footer initially and show it later.
+    $(document).ready(function() {
+        // jQuery effect to hide the footer initially
+        $('#footer').hide();
+
+        // Show the footer with a fade-in effect
+        setTimeout(function() {
+            $('#footer').fadeIn(1000);
+        }, 2000); // Delay for 2000 milliseconds (2 seconds)
+    });
+</script>
+<script>
+    //You can use various effects to enhance the visual appeal of your page. For example, you might want to add a fade-in effect to the category pairs.
+    $(document).ready(function() {
+        // jQuery effects for category pairs
+        $('.pair').hide().fadeIn(1000); // Fade in with a 1-second duration
+    });
+</script>
+<script>
+   // Implement a callback function after an animation is complete. For instance, after fading in the category pairs, you might want to log a message to the console.
+    $(document).ready(function() {
+        // jQuery effects for category pairs with callback
+        $('.pair').hide().fadeIn(1000, function() {
+            console.log('Category pairs faded in successfully!');
+        });
+    });
+</script>
+<script>
+    //Use jQuery to manipulate HTML content. For example, you can dynamically change the text of an element or add/remove classes.
+    $(document).ready(function() {
+        // jQuery to get and set HTML content
+        var titleText = $('#title').text(); // Get the text content of the element with ID 'title'
+        $('#title').text(titleText + ' - Updated'); // Set a new text content
+
+        // jQuery to add and remove classes
+        $('#title').addClass('highlight'); // Add a class
+        setTimeout(function() {
+            $('#title').removeClass('highlight'); // Remove the class after a delay
+        }, 3000); // Delay for 3000 milliseconds (3 seconds)
+    });
+</script>
+
+            
 </body>
 </html>
