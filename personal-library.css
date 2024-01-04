@@ -202,27 +202,35 @@ header{
     background: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
+    z-index: 1000; /* Adjust the z-index to ensure it appears above other elements */
 }
 
 .overlay-content {
-    background:white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-    border-radius: 5px;
-    max-width: 600px;
-    width: 100%;
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    max-width: 800px;
+    width: 90%;
     text-align: center;
     position: relative;
+    z-index: 1001; /* Make sure it's above the overlay background */
+    overflow: hidden; /* Hide any overflowing content */
 }
 
+/* Add some styles for the close button */
 .close-btn {
     position: absolute;
-    top: -10px; 
-    left: -50px;
+    top: -18px;
+    right: 740px;
+    font-size: 50px;
     cursor: pointer;
-    font-size: 40px;
-    color: #fff;
-    z-index: 2;
+    color: #333;
+    transition: color 0.3s ease-in-out;
+}
+
+.close-btn:hover {
+    color: #ff0000; /* Change color on hover */
 }
 #overlay-title {
     font-size: 24px;
@@ -251,7 +259,7 @@ header{
 
 /* Hover state */
 .styled-button:hover {
-    background-color: #2980b9; 
+    background-color: #0099ff; 
     color: #fff;
 }
 
