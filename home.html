@@ -7,6 +7,30 @@
     <link rel="stylesheet" href="./css/home.css">
     <title>Meso</title>
     <link rel="shortcut icon" type="image" href="/Meso/images/logo.png">
+    <style>
+        #fourth-part {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        #fourth-part-container {
+            z-index: 1;
+            position: relative;
+            text-align: center;
+            color: #fff;
+            padding: 100px 20px;
+        }
+    </style>
 </head>
 <body>
     <nav id="phone-nav">
@@ -82,21 +106,17 @@
     <a href="all-categories.html"><button id="view-all">View All Categories</button></a>
 </div>    
 </main>
-    <main id="third-part">
-        <h1 id="third-part-title">Our Company & Partners</h1>
-        <div id="company-partners">
-            <img src="./images/company-partner-img1.png" alt="" class="company-partner-img" id="company-partner-1">
-            <img src="./images/company-partner-img2.png" alt="" class="company-partner-img" id="company-partner-2">
-            <img src="./images/company-partner-img3.png" alt="" class="company-partner-img" id="company-partner-3">
-            <img src="./images/company-partner-img4.png" alt="" class="company-partner-img" id="company-partner-4">
-        </div>
-    </main>
-    <main id="fourth-part">
-        <div id="fourth-part-container">
-        <h1 id="start-growing-title">Start growing with <br> the community</h1>
-        <p id="start-growing-paragraph">Be a part of something bigger</p>
-        <button id="learnmore">Learn More</button>
-    </main>
+<main id="fourth-part">
+    <video id="video-background" autoplay muted loop>
+        <source src="edu-video.mp4" type="video/mp4">
+        
+    </video>
+    <div id="fourth-part-container">
+        <h1 style="color: #fff;" id="start-growing-title">Start growing with <br> the community</h1>
+        <p style="color: #fff;" id="start-growing-paragraph">Be a part of something bigger</p>
+        <button style="color: #fff;" id="learnmore">Learn More</button>
+    </div>
+</main>
     <footer id="footer">
         <div id="footer-container">
             <div id="books">
