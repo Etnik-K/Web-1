@@ -7,6 +7,9 @@
     <title>Settings</title>
     <link rel="stylesheet" href="css/settings.css">
     <link rel="shortcut icon" type="image" href="/Meso/images/logo.png">
+    
+
+    
 </head>
 <body>
     <nav id="phone-nav">
@@ -19,7 +22,7 @@
                 <span class="line line3"></span>
               </div>  
             <div class="logo">
-             <a href="home.html"><img src="./images/logo.png" alt=""></a>
+             <a href="home.html"><img src="./images/logo.png" alt=""  ></a>
             </div>
             <div class="menu-items">
               <li><a href="login.html">Log out</a></li>
@@ -57,38 +60,41 @@
            <div><h1 id="title">Basics</h1>
             <a href=""><img src="./images/pfp-container.png" alt="" id="pfp"></a>
             </div>
-            <div class="basic-info">
-                <p class="basic-info-text">Username</p>
+            <div class="basic-info" id="div-usr">
+                <p class="basic-info-text" id="username1">Username</p>
                 <div class="basic-info-images">
-                <a href=""><img src="./images/edit.png" alt=""></a>
+                    <button onclick="transformToTextboxUsr()" style="border: none;"  ><img src="./images/edit.png" alt="" ></button>
+                
             </div>
             </div>
-            <div class="basic-info">
-                <p class="basic-info-text">Full Name</p>
+            
+            <div class="basic-info" id="div-fn"> 
+                <p class="basic-info-text" id="fullname1">Full Name</p>
                 <div class="basic-info-images">
-                <a href=""><img src="./images/edit.png" alt=""></a>
+               <button onclick="transformToTextboxFN()" style="border: none;"><img src="./images/edit.png" alt="" ></button>
             </div>
         
         </div>
-        <div class="basic-info">
-            <p class="basic-info-text">Email</p>
+        <div class="basic-info" id="div-email">
+            <p class="basic-info-text" id="email1">Email</p>
             <div class="basic-info-images">
-            <a href=""><img src="./images/edit.png" alt=""></a>
+                <button onclick="transformToTextboxEmail()" style="border: none;"><img src="./images/edit.png" alt="" ></button>
         </div>
+      
 </div>
-<div class="basic-info">
-    <p class="basic-info-text">Phone Number</p>
+<div class="basic-info" id="div-tel">
+    <p class="basic-info-text" id="tel1">Phone Number</p>
     <div class="basic-info-images">
-    <a href=""><img src="./images/edit.png" alt=""></a>
+        <button onclick="transformToTextboxTel()" style="border: none;"><img src="./images/edit.png" alt="" ></button>
+    </div>
 </div>
-</div>
-<div class="basic-info">
-    <p class="basic-info-text">Birthdate</p>
+<div class="basic-info" id="div-bd">
+    <p class="basic-info-text" id="bd1">Birthdate</p>
     <div class="basic-info-images">
-    <a href=""><img src="./images/edit.png" alt=""></a>
+        <button onclick="transformToTextboxBD()" style="border: none;"><img src="./images/edit.png" alt="" ></button>
 </div>
-</div>
-<button id="save">Save Changes</button>
+</div> 
+<button id="save" >Save Changes</button>
 <img src="./images/Line.png" alt="" id="seperation">
 </div>
 <div id="container-2">
@@ -99,11 +105,12 @@
         <input type="password" name="" id="confirm-password" class="password" placeholder="Confirm Password">    
     </form>
     <button id="confirm">Confirm</button>
+    <span id="password-warning"></span>
     <img src="./images/Line.png" alt="" id="seperation">
 </div>
 <div id="container-3">
     <h1 id="delete-txt">Delete Account</h1>
-    <button id="delete">Delete</button>
+    <button id="delete" onclick="DeleteAccount()">Delete</button>
 </div>
 <footer id="footer">
     <div id="footer-container">
@@ -142,5 +149,198 @@
         </div>
     </div>
     </footer>
-    </body>
+    <script>
+        var originalState = document.getElementById("container").innerHTML;
+        var inputElementUsr;
+        var usrTransformed = false;
+        var inputElementFN;
+        var fnTransformed = false;
+        var inputElementEmail;
+        var emailTransformed = false;
+        var inputElementTel;
+        var telTransformed = false;
+        var inputElementBD;
+        var bdTransformed = false;
+        
+        
+        window.onload = function () {
+           
+            loadUserData();
+        };
+        
+        function transformToTextboxUsr() {
+            var myDiv = document.getElementById("div-usr");
+            document.getElementById("username1").textContent = "";
+            inputElementUsr = document.createElement("input");
+            inputElementUsr.type = "text";
+            inputElementUsr.value = "";
+            inputElementUsr.classList.add("basic-info");
+            myDiv.setAttribute("data-original-content", myDiv.innerHTML);
+            myDiv.replaceWith(inputElementUsr);
+            inputElementUsr.focus();
+            usrTransformed = true;
+        
+            
+            document.getElementById("save").addEventListener("click", saveChanges);
+        }
+        
+        function transformToTextboxFN() {
+            var myDiv = document.getElementById("div-fn");
+            document.getElementById("fullname1").textContent = "";
+            inputElementFN = document.createElement("input");
+            inputElementFN.type = "text";
+            inputElementFN.value = "";
+            inputElementFN.classList.add("basic-info");
+            myDiv.setAttribute("data-original-content", myDiv.innerHTML);
+            myDiv.replaceWith(inputElementFN);
+            inputElementFN.focus();
+            fnTransformed = true;
+        
+            
+            document.getElementById("save").addEventListener("click", saveChanges);
+        }
+        
+        function transformToTextboxEmail() {
+            var myDiv = document.getElementById("div-email");
+            document.getElementById("email1").textContent = "";
+            inputElementEmail = document.createElement("input");
+            inputElementEmail.type = "email";
+            inputElementEmail.value = "";
+            inputElementEmail.classList.add("basic-info");
+            myDiv.setAttribute("data-original-content", myDiv.innerHTML);
+            myDiv.replaceWith(inputElementEmail);
+            inputElementEmail.focus();
+            emailTransformed = true;
+        
+            
+            document.getElementById("save").addEventListener("click", saveChanges);
+        }
+        
+        function transformToTextboxTel() {
+            var myDiv = document.getElementById("div-tel");
+            document.getElementById("tel1").textContent = "";
+            inputElementTel = document.createElement("input");
+            inputElementTel.type = "tel";
+            inputElementTel.value = "";
+            inputElementTel.classList.add("basic-info");
+            myDiv.setAttribute("data-original-content", myDiv.innerHTML);
+            myDiv.replaceWith(inputElementTel);
+            inputElementTel.focus();
+            telTransformed = true;
+        
+
+            document.getElementById("save").addEventListener("click", saveChanges);
+        }
+        
+        function transformToTextboxBD() {
+            var myDiv = document.getElementById("div-bd");
+            document.getElementById("bd1").textContent = "";
+            inputElementBD = document.createElement("input");
+            inputElementBD.type = "date";
+            inputElementBD.value = "";
+            inputElementBD.classList.add("basic-info");
+            myDiv.setAttribute("data-original-content", myDiv.innerHTML);
+            myDiv.replaceWith(inputElementBD);
+            inputElementBD.focus();
+            bdTransformed = true;
+        
+
+            document.getElementById("save").addEventListener("click", saveChanges);
+        }
+        
+        function saveChanges() {
+
+            var inputValueUsr = inputElementUsr ? inputElementUsr.value : "";
+            var inputValueFN = inputElementFN ? inputElementFN.value : "";
+            var inputValueEmail = inputElementEmail ? inputElementEmail.value : "";
+            var inputValueTel = inputElementTel ? inputElementTel.value : "";
+            var inputValueBD = inputElementBD ? inputElementBD.value : "";
+        
+            
+            saveUserData(inputValueUsr, inputValueFN, inputValueEmail, inputValueTel, inputValueBD);
+        
+            
+            document.getElementById("container").innerHTML = originalState;
+        
+
+            if (inputValueUsr.trim() !== "") {
+                document.getElementById("username1").textContent = inputValueUsr;
+            }
+            if (inputValueFN.trim() !== "") {
+                document.getElementById("fullname1").textContent = inputValueFN;
+            }
+            if (inputValueEmail.trim() !== "") {
+                document.getElementById("email1").textContent = inputValueEmail;
+            }
+            if (inputValueTel.trim() !== "") {
+                document.getElementById("tel1").textContent = inputValueTel;
+            }
+            if (inputValueBD.trim() !== "") {
+                document.getElementById("bd1").textContent = inputValueBD;
+            }
+        }
+        
+        
+        function saveUserData(username, fullname, email, phonenumber, birthdate) {
+            localStorage.setItem("savedUsername", username);
+            localStorage.setItem("savedFullname", fullname);
+            localStorage.setItem("savedEmail", email);
+            localStorage.setItem("savedPhonenumber", phonenumber);
+            localStorage.setItem("savedBirthdate", birthdate);
+        }
+        
+        
+        function loadUserData() {
+            document.getElementById("username1").textContent = localStorage.getItem("savedUsername") || "Username";
+            document.getElementById("fullname1").textContent = localStorage.getItem("savedFullname") || "Full Name";
+            document.getElementById("email1").textContent = localStorage.getItem("savedEmail") || "Email";
+            document.getElementById("tel1").textContent = localStorage.getItem("savedPhonenumber") || "Phone Number";
+            document.getElementById("bd1").textContent = localStorage.getItem("savedBirthdate") || "Birthdate";
+        }
+        </script>
+        
+<script>
+    document.getElementById("confirm").addEventListener("click", function () {
+        
+        var oldPasswordElement = document.getElementById("old-password");
+        var newPasswordElement = document.getElementById("new-password");
+        var confirmPasswordElement = document.getElementById("confirm-password");
+
+        
+        var oldPassword = oldPasswordElement.value;
+        var newPassword = newPasswordElement.value;
+        var confirmPassword = confirmPasswordElement.value;
+
+        
+        if (newPassword !== confirmPassword) {
+            
+            document.getElementById("password-warning").textContent = "Passwords do not match!";
+            document.getElementById("password-warning").style.color = "red";
+        } else {
+            
+            document.getElementById("password-warning").textContent = "";
+
+            
+            oldPasswordElement.value = newPassword;
+            
+            newPasswordElement.value = "";
+            confirmPasswordElement.value = "";
+            oldPasswordElement.value="";
+        }
+    });
+    function DeleteAccount() {
+
+    localStorage.setItem("originalState", originalState);
+
+    
+    document.getElementById("container").innerHTML = originalState;
+    localStorage.setItem("savedUsername", "Username");
+            localStorage.setItem("savedFullname", "Full Name");
+            localStorage.setItem("savedEmail", "Email");
+            localStorage.setItem("savedPhonenumber", "Phone Number");
+            localStorage.setItem("savedBirthdate", "Birthdate");
+    };
+
+</script>
+
 </html>
