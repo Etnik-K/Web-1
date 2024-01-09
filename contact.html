@@ -4,8 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/contact.css">
+    <link rel="stylesheet" href="contact.css">
     <title>Contact</title>
+    
+    <style>
+     /*Stil shtese per butonin*/
+     button{
+    float:right;
+    padding:8px 12px;
+    margin:8px 0 0;
+    font-family:'Montserrat',sans-serif;
+    border:2px solid #78788c;
+    background:0;color:#5a5a6e;
+    cursor:pointer;
+    transition:all .3s}
+button:hover{
+    background:#78788c;
+    color:#fff
+}
+    </style>
 </head>
 <body>
     <nav id="phone-nav">
@@ -18,7 +35,7 @@
                 <span class="line line3"></span>
               </div>  
             <div class="logo">
-              <a href="home.html"><img src="./images/logo.png" alt=""></a>
+              <a href="home.html"><img src="logo.png" alt="logoja"></a>
             </div>
             <div class="menu-items">
               <li><a href="login.html">Login</a></li>
@@ -31,7 +48,7 @@
         </div>
       </nav>
     <header>
-        <a href="home.html" id="logo"><img src="./images/logo.png" alt=""></a>
+        <a href="home.html" id="logo" style="margin-right: auto; padding-left: 50px;"><img src="logo.png" alt="logoja"></a>
             <nav>
                 <ul class="nav_links">
                      <li><div class="boxContainer">
@@ -41,7 +58,7 @@
                                  <input type="text" name="" class="search" placeholder="Search course...">
                              </td>
                              <td>
-                              <a href="#"><img src="./images/loupe 1.png" alt="" class="material-icons"></a>
+                              <a href="#"><img src="loupe 1.png" alt="llupa" class="material-icons"></a>
                              </td>
                          </tr>
                         </table>
@@ -51,17 +68,33 @@
                 </ul>
             </nav>
         </header>
-        
-     <form class="form">
-        <h2>CONTACT US</h2>
-        <p type="Name:"><input placeholder="Write your name here.."></input></p>
-        <p type="Email:"><input placeholder="Let us know how to contact you back.."></input></p>
-        <p type="Message:"><input placeholder="What would you like to tell us.."></input></p>
-        <button>Send Message</button>
-        <div id="contact-info">
-          <span class="fa fa-phone"></span>001 1023 567
-          <span class="fa fa-envelope-o"></span> contact@company.com
-        </div>
+        <!--Qekjo forma kur e prek message e kom lidh me mail to-->
+        <form class="form" action="mailto:contact@company.com" method="post" enctype="text/plain" onsubmit="return validateForm()">
+          <h2>CONTACT US</h2>
+          <p type="Name:"><input placeholder="Write your name here.." name="Name" id="name"></input></p>
+          <p type="Email:"><input placeholder="Let us know how to contact you back.." name="Email" id="email"></input></p>
+          <p type="Message:"><input placeholder="What would you like to tell us.." name="Message" id="message"></input></p>
+          <button type="submit">Send Message</button>
+          <div id="contact-info">
+              <span class="fa fa-phone"></span>001 1023 567
+              <span class="fa fa-envelope-o"></span> contact@company.com
+          </div>
       </form>
+      <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+
+            if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+                alert('Ju lutem plotesoni te gjitha fushat');
+                return false; // E ndalon me bo submit
+            }
+
+            
+
+            return true; // E lejon me bo submit
+        }
+    </script>
 </body>
 </html>
