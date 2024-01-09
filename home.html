@@ -140,6 +140,8 @@
         var sound = document.getElementById(soundId);
         sound.play();
     }
+    let volume = document.getElementById("introSound");
+   volume.volume=0.3;
 
     function playSoundAndNavigate(soundId, destination) {
         var sound = document.getElementById(soundId);
