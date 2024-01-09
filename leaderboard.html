@@ -231,5 +231,44 @@ Leaderboard:
         </div>
     </div>
     </footer>
+  <script>
+      // Function to sort users based on their points and update ranking numbers
+      function sortUsers() {
+        // Get all the user elements
+        var users = document.querySelectorAll('.ranked');
+  
+        // Convert NodeList to array for easy sorting
+        var usersArray = Array.from(users);
+  
+        // Sort the array based on user points
+        usersArray.sort(function (a, b) {
+          var pointsA = parseFloat(a.querySelector('.score').innerText);
+          var pointsB = parseFloat(b.querySelector('.score').innerText);
+          return pointsB - pointsA;
+        });
+  
+        // Reorder the users in the leaderboard and update ranking numbers
+        var leaderboard = document.getElementById('leaderboard');
+        leaderboard.innerHTML = ''; // Clear the current content
+  
+        // Append the sorted users back to the leaderboard and update ranking numbers
+        usersArray.forEach(function (user, index) {
+          var newPosition = document.createElement('div');
+          newPosition.className = 'ranked';
+          newPosition.innerHTML = user.innerHTML;
+          leaderboard.appendChild(newPosition);
+  
+          // Update the ranking number
+          newPosition.querySelector('.position p').innerText = index + 1;
+        });
+  
+        // Example of using Number.MAX_VALUE
+        var maxScore = Number.MAX_VALUE;
+        console.log("Maximum score possible:", maxScore);
+      }
+  
+      // Call the sortUsers function when the page loads
+      window.onload = sortUsers;
+    </script>
 </body>
 </html>
