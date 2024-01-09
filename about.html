@@ -4,30 +4,241 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/about.css">
     <title>About Us</title>
-    <link rel="shortcut icon" type="image" href="logo.png">
+    <link rel="shortcut icon" type="image" href="../images/logo.png">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans",sans-serif;
+    box-sizing: border-box;
+}
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f1f1f1;
+            border: 5px solid lightgrey;
+           
+        }
+
+        .about-section {
+            background: url(pic.jpg) no-repeat left;
+            background-size: 55%;
+            background-color: #fdfdfd;
+            overflow: hidden;
+            height: 100%;
+            padding: 100px 0;
+        }
+
+        .inner-container {
+            width: 100%;
+            float: right;
+            background-color: #fdfdfd;
+            padding: 150px;
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        }
+
+        .inner-container h1 {
+            margin-bottom: 30px;
+            font-size: 38px;
+            font-weight: 900;
+        }
+
+        .text {
+            font-size: 15px;
+            color: #545454;
+            line-height: 26px;
+            text-align: justify;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: #023047;
+        }
+
+        .skills{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 
+    13px;
+    }
+        @media screen and (max-width: 1200px) {
+            .inner-container {
+                padding: 80px;
+            }
+        }
+
+        @media screen and (max-width: 1000px) {
+            .about-section {
+                background-size: 100%;
+                padding: 100px 40px;
+            }
+            .inner-container {
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .about-section {
+                padding: 0;
+            }
+            .inner-container {
+                padding: 60px;
+            }
+        }
+
+        span {
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            padding: 10px;
+            width: 500px;
+        }
+
+        span:hover {
+            background-image: linear-gradient(to right top, #f85370, #f35470, #ee5570, #e8556f, #e3566f);
+            color: #fff;
+            border-radius: 20px;
+            transition: 0.5s;
+        }
+
+        .active {
+            background-image: linear-gradient(to right top, #f85370, #f35470, #ee5570, #e8556f, #e3566f);
+            color: #fff;
+            border-radius: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        #top {
+            display: flex;
+            justify-content:space-between;
+            margin-bottom: 10px;
+            align-items: center;
+            padding-right: 10px; 
+        }
+
+        #logo {
+            padding-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            max-width: 1100px; 
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+    width: 50%; 
+    padding: 15px;
+    text-align: left;
+    }
+
+    td.highlight {
+    background-color: #29809b; 
+    }
+    td.highlight2 {
+    background-color: #8ECAE6; 
+    }
+    
+
+
+
+    </style>
 </head>
 <body>
     <div class="about-section">
         <div class="inner-container">
             <div id="top">
                 <h1>About Us</h1>
-                <a href="home.html"><img src="logo.png" alt="" id="logo"></a>
+                <a href="home.html"><img src="../images/logo.png" alt="" id="logo"></a>
             </div>
             <ul>
-                <li>A lack of interest in education and learning has been noticed a long time ago, and it has been caused mostly because of the lack of excitement students get when they are told to study.</li>
-                <li>At <a href="./home.html"><b>Meso.com</b></a> we seek to fix that.</li>
-            </ul>
-            <p class="text">
-                <ol>
-                    <li><a href="./home.html"><b>Meso.com</b></a> is a Web Platform that intends to help the youth during their learning journey.</li>
-                    <li>We try to be different from other platforms by making the process of learning school subjects fun.</li>
-                    <li>We do that by engaging our customers with fun activities that make them more interested in learning and more excited about it.</li>
-                    <li>At <a href="./home.html"><b>Meso.com</b></a>, learning is like a game where you have fun and feel included and validated while at the same time studying, which helps you get further in life.</li>
-                </ol>
+                <p class="text">
+                    A lack of interest in education and learning has been noticed a long time ago, and it has been caused mostly because of the lack of excitement students<br>
+                    get when they are told to study. At <a href="./home.html"><b>Meso.com</b></a> we seek to fix that.<a href="./home.html"><b>Meso.com</b></a> is a Web Platform that intends to help the youth during their learning journey.<br>
+                    We try to be different from other platforms, by making the process of learning school subjects fun. And we do that by engaging our customers with fun <br>
+                    activities, that make them more interested in learning and more excited about it. At <a href="./home.html"><b>Meso.com</b></a>,learning is like a game where you have fun and feel<br>
+                    included and validated while at the same time studying which helps you get further in life. Our web platform is dedicated to transforming the learning<br>
+                    experience for the youth. Unlike conventional platforms,<a href="./home.html"><b>Meso.com</b></a> is committed to infusing an element of joy into the process of acquiring knowledge.<br>
+                    We understand that conventional approaches may not resonate with all students, and that's why we employ innovative methods to make learning<br>
+                    school subjects an enjoyable adventure. In essence, <a href="./home.html"><b>Meso.com</b></a> is not just a platform for learning; it's a vibrant community where education is redefined<br>
+                    as an exciting game, fostering enthusiasm, inclusivity, and personal development.Join us at <a href="./home.html"><b>Meso.com</b></a>, where the joy of learning propels you further<br>
+                     in life, making education an adventure worth embracing.
             </p>
+            <table cellspacing="10" cellpadding="10">
+                <tr>
+                    <th>Helps Achieve</th>
+                    <th>Benefit</th>
+        
+                </tr>
+                <tr>
+                    <td class="highlight">Encourage Lifelong Love for Learning</td>
+                     <td class="highlight2">Build Confidence and Motivation</td>
+                </tr>
+                <tr>
+                    <td class="highlight2">Provide a Dynamic and Interactive Educational Journey</td>
+                    <td class="highlight">Create a Community of Support</td>
+                </tr>
+                
+                <tr>
+                    <td class="highlight">Support Personal Growth and Development</td>
+                    <td class="highlight2">Spark Interest in Various Subjects</td>
+                </tr>
+                
+                <tr>
+                    <td class="highlight2">Prepare Users for Future Success</td>
+                    <td class="highlight">Facilitate Personal Development</td>
+                </tr>
+            </table>
+            <br>
+            <br>
+
+            <ol>
+                <li><b>Boost Creativity and Innovation:</b><br>
+                    Meso.com encourages users to think creatively and embrace innovation, providing a platform where unique ideas and perspectives are valued.
+                </li>
+                <li><b>Foster Collaborative Learning:</b><br>
+                    Collaborative learning is at the core of Meso.com, where users can engage in group activities, discussions, and projects, promoting teamwork<br> and social skills.
+                </li>
+                <li><b>Enhance Critical Thinking Skills:</b><br>
+                    Our platform challenges users to think critically and analytically, developing problem-solving skills that are crucial for success in various aspects<br> of life.
+                </li>
+            </ol>
+            <br>
+            <ul>
+                <li><b>Transform Learning into an Enjoyable Experience:</b><br>
+                    Meso.com aims to make the process of learning school subjects enjoyable by incorporating engaging and entertaining activities, turning education<br> into a delightful journey.
+                </li>
+                <li><b>Cultivate Genuine Interest in Subjects:</b><br>
+                    We strive to spark a genuine interest in various subjects by employing innovative and interactive methods that capture the attention and curiosity<br> of our users.
+                </li>
+                <li><b>Create an Inclusive and Validating Environment:</b><br>
+                    Meso.com fosters a sense of inclusivity and validation, ensuring that every user feels recognized, appreciated, and part of a supportive community.
+                </li>
+            </ul>
+            
+           
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
