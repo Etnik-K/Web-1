@@ -7,8 +7,33 @@
     <link rel="stylesheet" href="./css/home.css">
     <title>Meso</title>
     <link rel="shortcut icon" type="image" href="/Meso/images/logo.png">
-    <audio id="buttonSound" src="./css/sound1.mp3"></audio>
-    <audio id="introSound" src="./css/introSound.mp3"></audio>
+    <audio id="buttonSound" src="./sound1.mp3"></audio>
+    <audio id="introSound" src="./introSound.mp3"></audio>
+    <link rel="shortcut icon" type="image" href="logo.png">
+    <style>
+        #fourth-part {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        #fourth-part-container {
+            z-index: 1;
+            position: relative;
+            text-align: center;
+            color: #fff;
+            padding: 100px 20px;
+        }
+    </style>
 </head>
 <body>
     <nav id="phone-nav">
@@ -90,11 +115,14 @@
             <img src="./images/company-partner-img4.png" alt="" class="company-partner-img" id="company-partner-4">
         </div>
     </main>
-    <main id="fourth-part">
+    <main id="fourth-part">      
+            <video id="video-background" autoplay muted loop>
+                <source src="./edu-video.mp4" type="video/mp4">
+            </video>
         <div id="fourth-part-container">
-        <h1 id="start-growing-title">Start growing with <br> the community</h1>
-        <p id="start-growing-paragraph">Be a part of something bigger</p>
-        <button id="learnmore" onclick="playSound('buttonSound')">Learn More</button>
+            <h1 style="color: #fff;" id="start-growing-title">Start growing with <br> the community</h1>
+        <p style="color: #fff;" id="start-growing-paragraph">Be a part of something bigger</p>
+        <button style="color: #fff;" id="learnmore" onclick="playSound('buttonSound')">Learn More</button>
     </main>
     <footer id="footer">
         <div id="footer-container">
@@ -140,8 +168,6 @@
         var sound = document.getElementById(soundId);
         sound.play();
     }
-    let volume = document.getElementById("introSound");
-   volume.volume=0.3;
 
     function playSoundAndNavigate(soundId, destination) {
         var sound = document.getElementById(soundId);
@@ -153,24 +179,26 @@
         sound.play();
     }
 
-    // Play sound on page load
+    
     window.addEventListener('load', function() {
             playSound('introSound');
         });
 
     document.getElementById('get-started-button').addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent the default behavior (navigation)
+        event.preventDefault(); 
         playSoundAndNavigate('buttonSound', 'login.html');
     });
 
     document.getElementById('learnmore').addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent the default behavior (navigation)
+        event.preventDefault(); 
         playSoundAndNavigate('buttonSound', 'learnmore.html');
     });
 
     document.getElementById('view-all').addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent the default behavior (navigation)
+        event.preventDefault(); 
         playSoundAndNavigate('buttonSound', 'all-categories.html');
     });
+    let volume = document.getElementById("introSound");
+   volume.volume=0.3;
 </script>
 </html>
