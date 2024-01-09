@@ -60,6 +60,26 @@
             renderChallenges("ongoing-challenges", ongoingChallengesData);
             renderChallenges("completed-challenges", completedChallengesData);
         });
+        document.addEventListener("DOMContentLoaded", function () {
+            const challengesTitleCanvas = document.getElementById("challengesTitleCanvas");
+            const challengesTitleCtx = challengesTitleCanvas.getContext("2d");
+
+            // Text content and CSS styles
+            const challengesTitleText = "My Challenges";
+            const challengesTitleCSS = '#my-challenges-title { text-align: center; margin-top: 50px; font-size: 50px; font-weight: bold; }';
+
+            // Inject CSS styles into the document
+            const styleElement = document.createElement("style");
+            styleElement.textContent = challengesTitleCSS;
+            document.head.appendChild(styleElement);
+
+            // Draw text on the canvas
+            challengesTitleCtx.font = "50px Poppins"; // Adjust font size as needed
+            challengesTitleCtx.fillStyle = "#023047"; // Text color
+            challengesTitleCtx.textAlign = "center";
+            challengesTitleCtx.textBaseline = "middle";
+            challengesTitleCtx.fillText(challengesTitleText, challengesTitleCanvas.width / 2, challengesTitleCanvas.height / 2);
+        });
     </script>
    
 </head>
@@ -108,11 +128,29 @@
         </nav>
     </header>
     <div class="personal-info">
-        <img src="pfp-img.png" alt="" id="pfp-img">
+        
+        <svg width="500" height="250">
+            <defs>
+                <clipPath id="circleView">
+                    <circle cx="250" cy="125" r="125" fill="#FFFFFF" />
+                </clipPath>
+            </defs>
+            <image 
+            
+              width="500" 
+              height="250" 
+              xlink:href="pfp-img.png" 
+              clip-path="url(#circleView)"
+             
+            />
+         </svg>
         <p id="username"><mark>Username</mark></p>
     </div>
+
     <div class="container mt-5">
-        <h1 id="my-challenges-title">My Challenges</h1>
+        <div class="personal-info">
+            <canvas id="challengesTitleCanvas" class="center" width="400" height="80"></canvas>
+        </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="challenges ongoing">
@@ -164,7 +202,7 @@
             </div>
         </div>
     </div>
-
+   
     <footer id="footer">
         <div id="footer-container">
             <div id="books">

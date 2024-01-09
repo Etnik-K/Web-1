@@ -114,6 +114,12 @@ mark {
   text-align: center;
   margin-top: 50px;
 }
+canvas.center {
+  text-decoration: black;
+  display: block;
+  margin: auto;
+  background-color: #ffffff; /* Set canvas background color */
+}
 
 .container {
   max-width: 1200px; /* Adjusted max width for better responsiveness */
