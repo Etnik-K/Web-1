@@ -4,33 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="./css/home.css">
     <title>Meso</title>
-    <link rel="shortcut icon" type="image" href="logo.png">
-    <style>
-        #fourth-part {
-            position: relative;
-            overflow: hidden;
-        }
-
-        #video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-
-        #fourth-part-container {
-            z-index: 1;
-            position: relative;
-            text-align: center;
-            color: #fff;
-            padding: 100px 20px;
-        }
-    </style>
+    <link rel="shortcut icon" type="image" href="/Meso/images/logo.png">
+    <audio id="buttonSound" src="./css/sound1.mp3"></audio>
+    <audio id="introSound" src="./css/introSound.mp3"></audio>
 </head>
 <body>
     <nav id="phone-nav">
@@ -43,12 +21,12 @@
                 <span class="line line3"></span>
               </div>  
             <div class="logo">
-              <img src="logo.png" alt="">
+              <img src="./images/logo.png" alt="">
             </div>
             <div class="menu-items">
               <li><a href="./login.html">Login</a></li>
               <li><a href="./login.html" target="_blank">About</a></li>
-              <li><a target="_blank" href="search.html">Search</a></li>
+              <li><a target="_blank" href="./search.html">Search</a></li>
 
             
             </div>
@@ -56,7 +34,7 @@
         </div>
       </nav>
     <header>
-    <a href="home.html" id="logo"><img src="logo.png" alt=""></a>
+    <a href="home.html" id="logo"><img src="./images/logo.png" alt=""></a>
     <nav>
         <ul class="nav_links">
              <li><div class="boxContainer">
@@ -66,13 +44,13 @@
                          <input type="text" name="" class="search" placeholder="Search course...">
                      </td>
                      <td>
-                      <a href="#"><img src="loupe 1.png" alt="" class="material-icons"></a>
+                      <a href="#"><img src="./images/loupe 1.png" alt="" class="material-icons"></a>
                       <a href="#"></a>
                      </td>
                  </tr>
                 </table>
             </div></li>
-            <li><a class="nav-link" href="login.html">Login</a></li>
+            <li><a class="nav-link" href="./login.html">Login</a></li>
             <li><a href="./about.html" target="_blank" class="nav-link" >About</a></li>
         </ul>
     </nav>
@@ -83,50 +61,41 @@
              TO LEARN?</h1>
         <p id="paragraph">Have fun while learning! <br>
              Too good to be true? <br> It is our duty to make that possible.</p>
-            <button id="get-started-button"><a href="login.html" id="get-started">Get started!</a></button>
+            <button id="get-started-button" onclick="playSound('buttonSound')"><a href="login.html" id="get-started">Get started!</a></button>
     </div>
     <div>
-        <img src="reading.png" alt="" id="reading">
+        <img src="./images/reading.png" alt="" id="reading">
 </div>
     </div>
-</main>
-<main>
-</main>
-</main>
-
+    <img src="/Meso/images/Line.png" alt="" id="seperation"> 
 <main id="part2">
 
     <h1 id="categories-title">Categories</h1>
     <div id="categories">
-      <a href="" class="category"><img src="maths.png" alt="" id="maths"></a>
-       <a href="" class="category"><img src="chemistry.png" alt="" id="chemistry"></a>
-       <a href="" class="category"><img src="webdev.png" alt="" id="webdev"></a>
-       <a href="" class="category"><img src="languages.png" alt="" id="languages"></a> 
+      <a href="" class="category"><img src="./images/maths.png" alt="" id="maths"></a>
+       <a href="" class="category"><img src="./images/chemistry.png" alt="" id="chemistry"></a>
+       <a href="" class="category"><img src="./images/webdev.png" alt="" id="webdev"></a>
+       <a href="" class="category"><img src="./images/languages.png" alt="" id="languages"></a> 
     </div>
     <div id="view-all-btn">
-    <a href="all-categories.html"><button id="view-all">View All Categories</button></a>
+        <a href="all-categories.html"><button id="view-all" onclick="playSound('buttonSound')">View All Categories</button></a>
 </div>    
 </main>
-<main id="third-part">
-    <h1 id="third-part-title">Our Company & Partners</h1>
-    <div id="company-partners">
-        <img src="company-partner-img1.png" alt="" class="company-partner-img" id="company-partner-1">
-        <img src="company-partner-img2.png" alt="" class="company-partner-img" id="company-partner-2">
-        <img src="company-partner-img3.png" alt="" class="company-partner-img" id="company-partner-3">
-        <img src="company-partner-img4.png" alt="" class="company-partner-img" id="company-partner-4">
-    </div>
-</main>
-<main id="fourth-part">
-    <video id="video-background" autoplay muted loop>
-        <source src="edu-video.mp4" type="video/mp4">
-        
-    </video>
-    <div id="fourth-part-container">
-        <h1 style="color: #fff;" id="start-growing-title">Start growing with <br> the community</h1>
-        <p style="color: #fff;" id="start-growing-paragraph">Be a part of something bigger</p>
-        <button style="color: #fff;" id="learnmore">Learn More</button>
-    </div>
-</main>
+    <main id="third-part">
+        <h1 id="third-part-title">Our Company & Partners</h1>
+        <div id="company-partners">
+            <img src="./images/company-partner-img1.png" alt="" class="company-partner-img" id="company-partner-1">
+            <img src="./images/company-partner-img2.png" alt="" class="company-partner-img" id="company-partner-2">
+            <img src="./images/company-partner-img3.png" alt="" class="company-partner-img" id="company-partner-3">
+            <img src="./images/company-partner-img4.png" alt="" class="company-partner-img" id="company-partner-4">
+        </div>
+    </main>
+    <main id="fourth-part">
+        <div id="fourth-part-container">
+        <h1 id="start-growing-title">Start growing with <br> the community</h1>
+        <p id="start-growing-paragraph">Be a part of something bigger</p>
+        <button id="learnmore" onclick="playSound('buttonSound')">Learn More</button>
+    </main>
     <footer id="footer">
         <div id="footer-container">
             <div id="books">
@@ -144,12 +113,12 @@
             <div id="gallery">
                 <h1 id="gallery-title">Gallery</h1>
                 <div id="first-pair">
-                <img src="footer-image-1.png" alt="" class="gallery-img">
-                <img src="footer-image-2.png" alt="" class="gallery-img">
+                <img src="./images/footer-image-1.png" alt="" class="gallery-img">
+                <img src="./images/footer-image-2.png" alt="" class="gallery-img">
                 </div>
                 <div id="second-pair">
-                <img src="footer-image-3.png" alt="" class="gallery-img">
-                <img src="footer-image-4.png" alt="" class="gallery-img">
+                <img src="./images/footer-image-3.png" alt="" class="gallery-img">
+                <img src="./images/footer-image-4.png" alt="" class="gallery-img">
                 </div>
             </div>
             <div id="about">
@@ -166,4 +135,40 @@
         </footer>
     
 </body>
+<script>
+    function playSound(soundId) {
+        var sound = document.getElementById(soundId);
+        sound.play();
+    }
+
+    function playSoundAndNavigate(soundId, destination) {
+        var sound = document.getElementById(soundId);
+
+        sound.addEventListener('ended', function() {
+            window.location.href = destination;
+        });
+
+        sound.play();
+    }
+
+    // Play sound on page load
+    window.addEventListener('load', function() {
+            playSound('introSound');
+        });
+
+    document.getElementById('get-started-button').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default behavior (navigation)
+        playSoundAndNavigate('buttonSound', 'login.html');
+    });
+
+    document.getElementById('learnmore').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default behavior (navigation)
+        playSoundAndNavigate('buttonSound', 'learnmore.html');
+    });
+
+    document.getElementById('view-all').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default behavior (navigation)
+        playSoundAndNavigate('buttonSound', 'all-categories.html');
+    });
+</script>
 </html>
