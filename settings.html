@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings</title>
-    <link rel="stylesheet" href="settings.css">
-    <link rel="shortcut icon" type="image" href="logo.png">
+    <link rel="stylesheet" href="css/settings.css">
+    <link rel="shortcut icon" type="image" href="/Meso/images/logo.png">
     
 
     
@@ -22,7 +22,7 @@
                 <span class="line line3"></span>
               </div>  
             <div class="logo">
-             <a href="home.html"><img src="logo.png" alt=""  ></a>
+             <a href="home.html"><img src="./images/logo.png" alt=""  ></a>
             </div>
             <div class="menu-items">
               <li><a href="login.html">Log out</a></li>
@@ -35,7 +35,7 @@
         </div>
       </nav>
     <header>
-        <a href="home.html" id="logo"><img src="logo.png" alt=""></a>  
+        <a href="home.html" id="logo"><img src="./images/logo.png" alt=""></a>  
             <nav>
                 <ul class="nav_links">
                      <li><div class="boxContainer">
@@ -45,7 +45,7 @@
                                  <input type="text" name="" class="search" placeholder="Search course...">
                              </td>
                              <td>
-                              <a href="#"><img src="loupe 1.png" alt="" class="material-icons"></a>
+                              <a href="#"><img src="./images/loupe 1.png" alt="" class="material-icons"></a>
                              </td>
                          </tr>
                         </table>
@@ -58,12 +58,12 @@
         </header>
         <div id="container">
            <div><h1 id="title">Basics</h1>
-            <a href=""><img src="pfp-container.png" alt="" id="pfp"></a>
+            <a href=""><img src="./images/pfp-container.png" alt="" id="pfp"></a>
             </div>
             <div class="basic-info" id="div-usr">
                 <p class="basic-info-text" id="username1">Username</p>
                 <div class="basic-info-images">
-                    <button onclick="transformToTextboxUsr()" style="border: none;"  ><img src="edit.png" alt="" ></button>
+                    <button onclick="transformToTextboxUsr()" style="border: none;"  ><img src="./images/edit.png" alt="" ></button>
                 
             </div>
             </div>
@@ -71,31 +71,31 @@
             <div class="basic-info" id="div-fn"> 
                 <p class="basic-info-text" id="fullname1">Full Name</p>
                 <div class="basic-info-images">
-               <button onclick="transformToTextboxFN()" style="border: none;"><img src="edit.png" alt="" ></button>
+               <button onclick="transformToTextboxFN()" style="border: none;"><img src="./images/edit.png" alt="" ></button>
             </div>
         
         </div>
         <div class="basic-info" id="div-email">
             <p class="basic-info-text" id="email1">Email</p>
             <div class="basic-info-images">
-                <button onclick="transformToTextboxEmail()" style="border: none;"><img src="edit.png" alt="" ></button>
+                <button onclick="transformToTextboxEmail()" style="border: none;"><img src="./images/edit.png" alt="" ></button>
         </div>
       
 </div>
 <div class="basic-info" id="div-tel">
     <p class="basic-info-text" id="tel1">Phone Number</p>
     <div class="basic-info-images">
-        <button onclick="transformToTextboxTel()" style="border: none;"><img src="edit.png" alt="" ></button>
+        <button onclick="transformToTextboxTel()" style="border: none;"><img src="./images/edit.png" alt="" ></button>
     </div>
 </div>
 <div class="basic-info" id="div-bd">
     <p class="basic-info-text" id="bd1">Birthdate</p>
     <div class="basic-info-images">
-        <button onclick="transformToTextboxBD()" style="border: none;"><img src="edit.png" alt="" ></button>
+        <button onclick="transformToTextboxBD()" style="border: none;"><img src="./images/edit.png" alt="" ></button>
 </div>
 </div> 
 <button id="save" >Save Changes</button>
-<img src="Line.png" alt="" id="seperation">
+<img src="./images/Line.png" alt="" id="seperation">
 </div>
 <div id="container-2">
     <h1 id="title">Password</h1>
@@ -106,7 +106,7 @@
     </form>
     <button id="confirm">Confirm</button>
     <span id="password-warning"></span>
-    <img src="Line.png" alt="" id="seperation">
+    <img src="./images/Line.png" alt="" id="seperation">
 </div>
 <div id="container-3">
     <h1 id="delete-txt">Delete Account</h1>
@@ -129,12 +129,12 @@
         <div id="gallery">
             <h1 id="gallery-title">Gallery</h1>
             <div id="first-pair">
-            <img src="footer-image-1.png" alt="" class="gallery-img">
-            <img src="footer-image-2.png" alt="" class="gallery-img">
+            <img src="./images/footer-image-1.png" alt="" class="gallery-img">
+            <img src="./images/footer-image-2.png" alt="" class="gallery-img">
             </div>
             <div id="second-pair">
-            <img src="footer-image-3.png" alt="" class="gallery-img">
-            <img src="footer-image-4.png" alt="" class="gallery-img">
+            <img src="./images/footer-image-3.png" alt="" class="gallery-img">
+            <img src="./images/footer-image-4.png" alt="" class="gallery-img">
             </div>
         </div>
         <div id="about">
@@ -162,7 +162,7 @@
         var inputElementBD;
         var bdTransformed = false;
         
-        
+        // Load saved data from localStorage when the page loads
         window.onload = function () {
            
             loadUserData();
@@ -180,7 +180,7 @@
             inputElementUsr.focus();
             usrTransformed = true;
         
-            
+            // Attach event listener for Save Changes button
             document.getElementById("save").addEventListener("click", saveChanges);
         }
         
@@ -196,7 +196,7 @@
             inputElementFN.focus();
             fnTransformed = true;
         
-            
+            // Attach event listener for Save Changes button
             document.getElementById("save").addEventListener("click", saveChanges);
         }
         
@@ -212,7 +212,7 @@
             inputElementEmail.focus();
             emailTransformed = true;
         
-            
+            // Attach event listener for Save Changes button
             document.getElementById("save").addEventListener("click", saveChanges);
         }
         
@@ -228,7 +228,7 @@
             inputElementTel.focus();
             telTransformed = true;
         
-
+            // Attach event listener for Save Changes button
             document.getElementById("save").addEventListener("click", saveChanges);
         }
         
@@ -244,25 +244,25 @@
             inputElementBD.focus();
             bdTransformed = true;
         
-
+            // Attach event listener for Save Changes button
             document.getElementById("save").addEventListener("click", saveChanges);
         }
         
         function saveChanges() {
-
+            // Retrieve the values from the input elements
             var inputValueUsr = inputElementUsr ? inputElementUsr.value : "";
             var inputValueFN = inputElementFN ? inputElementFN.value : "";
             var inputValueEmail = inputElementEmail ? inputElementEmail.value : "";
             var inputValueTel = inputElementTel ? inputElementTel.value : "";
             var inputValueBD = inputElementBD ? inputElementBD.value : "";
         
-            
+            // Save data to localStorage
             saveUserData(inputValueUsr, inputValueFN, inputValueEmail, inputValueTel, inputValueBD);
         
-            
+            // Reset the entire container to its original state
             document.getElementById("container").innerHTML = originalState;
         
-
+            // Update the value of the paragraph if the input is not empty
             if (inputValueUsr.trim() !== "") {
                 document.getElementById("username1").textContent = inputValueUsr;
             }
@@ -280,7 +280,7 @@
             }
         }
         
-        
+        // Save data to localStorage
         function saveUserData(username, fullname, email, phonenumber, birthdate) {
             localStorage.setItem("savedUsername", username);
             localStorage.setItem("savedFullname", fullname);
@@ -289,7 +289,7 @@
             localStorage.setItem("savedBirthdate", birthdate);
         }
         
-        
+        // Load data from localStorage and update the UI
         function loadUserData() {
             document.getElementById("username1").textContent = localStorage.getItem("savedUsername") || "Username";
             document.getElementById("fullname1").textContent = localStorage.getItem("savedFullname") || "Full Name";
@@ -301,38 +301,40 @@
         
 <script>
     document.getElementById("confirm").addEventListener("click", function () {
-        
+        // Get the old, new, and confirm password elements
         var oldPasswordElement = document.getElementById("old-password");
         var newPasswordElement = document.getElementById("new-password");
         var confirmPasswordElement = document.getElementById("confirm-password");
 
-        
+        // Get the values entered by the user
         var oldPassword = oldPasswordElement.value;
         var newPassword = newPasswordElement.value;
         var confirmPassword = confirmPasswordElement.value;
 
-        
+        // Check if the new password and confirm password match
         if (newPassword !== confirmPassword) {
-            
+            // Display a warning if passwords don't match
             document.getElementById("password-warning").textContent = "Passwords do not match!";
             document.getElementById("password-warning").style.color = "red";
         } else {
-            
+            // Clear the warning message
             document.getElementById("password-warning").textContent = "";
 
-            
+            // Update the old password with the new password
             oldPasswordElement.value = newPassword;
-            
+            // You can perform additional actions or submit the form here
+
+            // Optionally, reset the new and confirm password fields
             newPasswordElement.value = "";
             confirmPasswordElement.value = "";
             oldPasswordElement.value="";
         }
     });
     function DeleteAccount() {
-
+    // Save the original state to localStorage
     localStorage.setItem("originalState", originalState);
 
-    
+    // Reset the entire container to its original state
     document.getElementById("container").innerHTML = originalState;
     localStorage.setItem("savedUsername", "Username");
             localStorage.setItem("savedFullname", "Full Name");
@@ -341,6 +343,7 @@
             localStorage.setItem("savedBirthdate", "Birthdate");
     };
 
+// Load the original state from localStorage when the page loads
 </script>
 
 </html>
