@@ -297,9 +297,6 @@
             document.getElementById("tel1").textContent = localStorage.getItem("savedPhonenumber") || "Phone Number";
             document.getElementById("bd1").textContent = localStorage.getItem("savedBirthdate") || "Birthdate";
         }
-        </script>
-        
-<script>
     document.getElementById("confirm").addEventListener("click", function () {
         // Get the old, new, and confirm password elements
         var oldPasswordElement = document.getElementById("old-password");
@@ -331,19 +328,25 @@
         }
     });
     function DeleteAccount() {
-    // Save the original state to localStorage
-    localStorage.setItem("originalState", originalState);
+        // Ask the user for confirmation before deleting the account
+        var confirmDelete = confirm("Are you sure you want to delete your account? This action cannot be undone.");
 
-    // Reset the entire container to its original state
-    document.getElementById("container").innerHTML = originalState;
-    localStorage.setItem("savedUsername", "Username");
+        // If the user confirms, proceed with the deletion
+        if (confirmDelete) {
+            // Save the original state to localStorage
+            localStorage.setItem("originalState", originalState);
+
+            // Reset the entire container to its original state
+            document.getElementById("container").innerHTML = originalState;
+
+            // Clear the saved user data in localStorage
+            localStorage.setItem("savedUsername", "Username");
             localStorage.setItem("savedFullname", "Full Name");
             localStorage.setItem("savedEmail", "Email");
             localStorage.setItem("savedPhonenumber", "Phone Number");
             localStorage.setItem("savedBirthdate", "Birthdate");
-    };
-
-// Load the original state from localStorage when the page loads
+        }
+    }
 </script>
 
 </html>
