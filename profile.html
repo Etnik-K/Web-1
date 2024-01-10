@@ -57,7 +57,7 @@
     
 </head>
 
-<body>
+<body id="body">
     <nav id="phone-nav">
         <div class="navbar">
           <div class="container nav-container">
@@ -111,36 +111,37 @@
 </div>
 <div id="badge-xp">
 <img src="badge.png" alt="" id="badge-img" class="info-img">
-<p>100xp</p>
+<p id="xp">0</p><p>xp</p>
 </div>
     </div>
 
     
-    <div id="tasks">
+<div id="tasks">
     <div id="schedule-text-image">
-        <p>My schedule</p>
-      <a href="#popup2"><img src="add.png" alt=""></a>
+        <p>Add a new Task </p>
+        <button id="addButton" style="background-color: transparent; border: none;"><img src="add.png" ></img></button>
     </div>
     </div>
-    <div class="task">
-        <p class="task-text">Task 1</p>
+    </div>
+    <div class="task" id="task1">
+        <div id="textbox1">
+            <p id="task-text1">Task 1</p>
+        </div>
+        <div class="task-images" >
+        <button style="background-color: transparent; border: none;" onclick="transformToTextboxTask1(task-text1)"><img src="edit.png" class="edit-img" alt="" title="Edit Task Name" id="edit"> </button>  </div>
+        <button style="background-color: transparent; border: none;" onclick="deleteTask('task1')"><img src="clipboard.png" alt="" title="Remove Task" id="completed"></button>   
+    </div>
+    <div class="task" id="task2">
+        <p class="task-text2">Task 2</p>
         <div class="task-images">
-        <a href="#popup1"><img src="edit.png" class="edit-img" alt=""></a>
-        <a href=""><img src="remove.png" alt=""></a>
+            <button style="background-color: transparent; border: none;" onclick="transformToTextboxTask1(task-text2)"><img src="edit.png" class="edit-img" alt="" title="Edit Task Name"> </button>  </div>
+            <button style="background-color: transparent; border: none;" onclick="deleteTask('task2')"><img src="clipboard.png" alt="" title="Remove Task" id="completed"></button> 
     </div>
-    </div>
-    <div class="task">
-        <p class="task-text">Task 2</p>
+    <div class="task" id="task3">
+        <p class="task-text3">Task 3</p>
         <div class="task-images">
-        <a href="#popup1"><img src="edit.png" alt="" class="edit-img"></a>
-        <a href=""><img src="remove.png" alt=""></a>
-    </div>
-    </div>
-    <div class="task">
-        <p class="task-text">Task 3</p>
-        <div class="task-images">
-        <a href="#popup1"><img src="edit.png" alt="" class="edit-img"></a>
-        <a href=""><img src="remove.png" alt=""></a>
+        <button style="background-color: transparent; border: none;" onclick="transformToTextboxTask1(task-text3)"><img src="edit.png" class="edit-img" alt="" title="Edit Task Name"> </button>  </div>
+        <button style="background-color: transparent; border: none;" onclick="deleteTask('task3')"><img src="clipboard.png" alt="" title="Remove Task" id="completed"></button>
     </div>      
 </div>
 
@@ -236,142 +237,200 @@
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const tasks = document.querySelectorAll('.task');
+            loadTasksFromLocalStorage();
+    // Load tasks from local storage
+    loadTasksFromLocalStorage();
+    
 
-            tasks.forEach(task => {
-                task.setAttribute('draggable', true);
+    const tasks = document.querySelectorAll('.task');
 
-                task.addEventListener('dragstart', handleDragStart);
-                task.addEventListener('dragenter', handleDragEnter);
-                task.addEventListener('dragover', handleDragOver);
-                task.addEventListener('dragleave', handleDragLeave);
-                task.addEventListener('drop', handleDrop);
-                task.addEventListener('dragend', handleDragEnd);
-            });
+    tasks.forEach(task => {
+        task.setAttribute('draggable', true);
 
-            let dragSrcElement = null;
+        task.addEventListener('dragstart', handleDragStart);
+        task.addEventListener('dragenter', handleDragEnter);
+        task.addEventListener('dragover', handleDragOver);
+        task.addEventListener('dragleave', handleDragLeave);
+        task.addEventListener('drop', handleDrop);
+        task.addEventListener('dragend', handleDragEnd);
+    });
 
-            function handleDragStart(e) {
-                this.style.opacity = '0.4';
-                dragSrcElement = this;
+    let dragSrcElement = null;
 
-                e.dataTransfer.effectAllowed = 'move';
-                e.dataTransfer.setData('text/html', this.innerHTML);
-            }
+    function handleDragStart(e) {
+        this.style.opacity = '0.4';
+        dragSrcElement = this;
 
-            function handleDragEnter(e) {
-                this.classList.add('dragover');
-            }
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', this.innerHTML);
+    }
 
-            function handleDragOver(e) {
-                if (e.preventDefault) {
-                    e.preventDefault();
-                }
+    function handleDragEnter(e) {
+        this.classList.add('dragover');
+    }
 
-                e.dataTransfer.dropEffect = 'move';
-                return false;
-            }
+    function handleDragOver(e) {
+        if (e.preventDefault) {
+            e.preventDefault();
+        }
 
-            function handleDragLeave() {
-                this.classList.remove('dragover');
-            }
+        e.dataTransfer.dropEffect = 'move';
+        return false;
+    }
 
-            function handleDrop(e) {
-                if (e.stopPropagation) {
-                    e.stopPropagation();
-                }
+    function handleDragLeave() {
+        this.classList.remove('dragover');
+    }
 
-                if (dragSrcElement !== this) {
-                    dragSrcElement.innerHTML = this.innerHTML;
-                    this.innerHTML = e.dataTransfer.getData('text/html');
-                }
+    function handleDrop(e) {
+        if (e.stopPropagation) {
+            e.stopPropagation();
+        }
 
-                return false;
-            }
+        if (dragSrcElement !== this) {
+            dragSrcElement.innerHTML = this.innerHTML;
+            this.innerHTML = e.dataTransfer.getData('text/html');
+        }
 
-            function handleDragEnd() {
-                this.style.opacity = '1';
-                tasks.forEach(task => task.classList.remove('dragover'));
-            }
-        });
-    </script>
+        return false;
+    }
 
+    function handleDragEnd() {
+        this.style.opacity = '1';
+        tasks.forEach(task => task.classList.remove('dragover'));
 
+        // Save tasks to local storage after dragging
+        saveTasksToLocalStorage();
+    }
+});
 
+document.getElementById('addButton').addEventListener('click', function () {
+    // Prompt the user for a new task name
+    const taskName = prompt('Enter the new task name:');
+    if (taskName !== null && taskName.trim() !== '') {
+        // Create a new task with the same structure as existing tasks
+        const newTask = document.createElement('div');
+        newTask.classList.add('task');
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const searchInput = document.querySelector('.search');
-      const suggestionsContainer = document.createElement('div');
-      suggestionsContainer.id = 'suggestions';
-      searchInput.parentNode.appendChild(suggestionsContainer);
-  
-      let prevInputValue = ''; // Ruan input-in e mëparshëm
-      let timeoutId; // Ruan id e timeout-it
-  
-      searchInput.addEventListener('input', function () {
+        // Generate a unique ID for the new task
+        const existingTasks = document.querySelectorAll('.task');
+        const newTaskId = 'task' + (existingTasks.length + 1);
+        newTask.id = newTaskId;
+
+        // Create the div with ID "textbox" inside the new task
+        const textboxDiv = document.createElement('div');
+        textboxDiv.id = 'textbox' + newTaskId.charAt(newTaskId.length - 1);
+
+        // Create the paragraph element inside the textboxDiv
+        const taskText = document.createElement('p');
+        taskText.id = 'task-text' + newTaskId.charAt(newTaskId.length - 1);
+        taskText.textContent = taskName;
+
+        // Append the taskText to the textboxDiv
+        textboxDiv.appendChild(taskText);
+
+        // Append the textboxDiv to the newTask
+        newTask.appendChild(textboxDiv);
+
+        // Create the task-images container inside the new task
+        const taskImagesContainer = document.createElement('div');
+        taskImagesContainer.classList.add('task-images');
+
+        // Create the edit button with onclick attribute
+        const editButton = document.createElement('button');
+        editButton.style = "background-color: transparent; border: none;";
+        editButton.setAttribute('onclick', `transformToTextboxTask1('${textboxDiv.id}')`);
+        editButton.innerHTML = '<img src="edit.png" class="edit-img" alt="" title="Edit Task Name" id="edit">';
+
+        // Create the remove button with onclick attribute
+        const removeButton = document.createElement('button');
+        removeButton.style = "background-color: transparent; border: none;";
+        removeButton.setAttribute('onclick', `deleteTask('${newTask.id}')`);
+        removeButton.innerHTML = '<img src="clipboard.png" alt="" title="Remove Task" id="completed">';
+
+        // Append the editButton and removeButton to taskImagesContainer
+        taskImagesContainer.appendChild(editButton);
+        taskImagesContainer.appendChild(removeButton);
+
+        // Append taskImagesContainer to newTask
+        newTask.appendChild(taskImagesContainer);
+
+        // Append the newTask at the bottom of the existing tasks
+        const tasksContainer = document.getElementById('tasks');
+        tasksContainer.appendChild(newTask);
+
+        // Save tasks to local storage after adding a new task
+        saveTasksToLocalStorage();
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.querySelector('.search');
+    const suggestionsContainer = document.createElement('div');
+    suggestionsContainer.id = 'suggestions';
+    searchInput.parentNode.appendChild(suggestionsContainer);
+
+    let prevInputValue = ''; // Ruan input-in e mëparshëm
+    let timeoutId; // Ruan id e timeout-it
+
+    searchInput.addEventListener('input', function () {
         const inputValue = this.value.trim();
-  
+
         // Përparim: heqim timeout-in ekzistues për të shmangur një shfaqje të vonuar të sugjerimeve
         clearTimeout(timeoutId);
-  
+
         // Përdorim timeout për ta vonuar shfaqjen e sugjerimeve pas një periudhe të caktuar
         timeoutId = setTimeout(() => {
-          // Nëse input-i ka ndryshuar nga i mëparshmi ose është bosh
-          if (inputValue !== prevInputValue || inputValue === '') {
-            // Përdor AJAX ose fetch për të dërguar kërkesën në server
-            // dhe marr sugjerime në përgjigje
-  
-            // Shembull i thjeshtë:
-            const mockSuggestions = ['Architecture', 'Health & Fitness', 'Languages', 'Maths', 'Politics', 'Reading', 'Robotics', 'Science', 'Web dev'];
-  
-            // Shfaq sugjerimet në div-in e krijuar duke përdorur filtrimin
-            displaySuggestions(mockSuggestions, inputValue);
-  
-            // Përditëso input-in e mëparshëm
-            prevInputValue = inputValue;
-          }
+            // Nëse input-i ka ndryshuar nga i mëparshmi ose është bosh
+            if (inputValue !== prevInputValue || inputValue === '') {
+                // Përdor AJAX ose fetch për të dërguar kërkesën në server
+                // dhe marr sugjerime në përgjigje
+
+                // Shembull i thjeshtë:
+                const mockSuggestions = ['Architecture', 'Health & Fitness', 'Languages', 'Maths', 'Politics', 'Reading', 'Robotics', 'Science', 'Web dev'];
+
+                // Shfaq sugjerimet në div-in e krijuar duke përdorur filtrimin
+                displaySuggestions(mockSuggestions, inputValue);
+
+                // Përditëso input-in e mëparshëm
+                prevInputValue = inputValue;
+            }
         }, 300); // Numri i milisekondave për periudhën e vonimit
-      });
-  
-      function displaySuggestions(suggestions, filterText) {
+    });
+
+    function displaySuggestions(suggestions, filterText) {
         // Përputhja me filtrin case-insensitive
         const filteredSuggestions = filterText
-          ? suggestions.filter(suggestion => suggestion.toLowerCase().includes(filterText.toLowerCase()))
-          : suggestions;
-  
+            ? suggestions.filter(suggestion => suggestion.toLowerCase().includes(filterText.toLowerCase()))
+            : suggestions;
+
         // Shfaq sugjerimet në një kontenier
         suggestionsContainer.innerHTML = filteredSuggestions.map(suggestion => `<div class="suggestion">${suggestion}</div>`).join('');
-      }
-    });
-  </script>
+    }
+});
 
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.querySelector('.search');
+    const loupeIcon = document.querySelector('.material-icons');
 
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const searchInput = document.querySelector('.search');
-      const loupeIcon = document.querySelector('.material-icons');
-  
-      function navigateToCourse() {
+    function navigateToCourse() {
         // Merr vlerën e shkruar në input
         const inputValue = searchInput.value.trim().toLowerCase();
-  
+
         // Përputh input-in me kurset dhe përcakto linkun përkatës
         let courseLink = '';
         switch (inputValue) {
             case 'architecture':
-            courseLink = 'https://www.coursera.org/search?query=architecture';
-            break;
+                courseLink = 'https://www.coursera.org/search?query=architecture';
+                break;
 
             case 'health & fitness':
-            courseLink = 'https://www.coursera.org/search?query=health%20and%20fitness&';
-            break;
+                courseLink = 'https://www.coursera.org/search?query=health%20and%20fitness&';
+                break;
 
             case 'languages':
-            courseLink = 'https://www.coursera.org/search?query=languages&';
-            break;
+                courseLink = 'https://www.coursera.org/search?query=languages&';
+                break;
 
             case 'maths':
                 courseLink = 'https://www.khanacademy.org/math';
@@ -384,7 +443,7 @@
             case 'reading':
                 courseLink = 'https://www.coursera.org/projects/actively-learn';
                 break;
-            
+
             case 'robotics':
                 courseLink = 'https://www.coursera.org/specializations/robotics';
                 break;
@@ -396,81 +455,109 @@
             case 'web dev':
                 courseLink = 'https://www.coursera.org/learn/html-css-javascript-for-web-developers';
                 break;
-          // Shtoni raste të tjera për kurset e tjera
-  
-          default:
-            // Nëse nuk gjetet kursi, mund të lini bosh ose shtoni një veprim të tjera
-            break;
+
+            default:
+                break;
         }
-  
-        // Nëse ka një link të caktuar, bëni përcjelljen
+
         if (courseLink !== '') {
-          window.location.href = courseLink;
+            window.location.href = courseLink;
         }
-      }
-  
-      loupeIcon.addEventListener('click', navigateToCourse);
-  
-      searchInput.addEventListener('keypress', function (e) {
+    }
+
+    loupeIcon.addEventListener('click', navigateToCourse);
+
+    searchInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
-          navigateToCourse();
+            navigateToCourse();
         }
-      });
     });
-  </script>
+});
 
-<!-- Shtoni këtë pjesë në fund të skedarit tuaj HTML, para mbylljes së etiketës </body> -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const editButtons = document.querySelectorAll('.edit-img');
-        const editPopup = document.getElementById('edit-popup');
-        const editForm = document.getElementById('edit-form');
-        const editTaskNameInput = document.getElementById('edit-task-name');
-        const editAlertTimeInput = document.getElementById('edit-alert-time');
-        const editDeadlineInput = document.getElementById('edit-deadline');
-        const saveEditButton = document.getElementById('save-edit');
+var originalState = document.getElementById("tasks").innerHTML;
 
-        let currentEditTask = null;
+function transformToTextboxTask1(taskTextID) {
+    var textElement = document.getElementById(taskTextID);
+    document.getElementById(taskTextID).textContent = "";
 
-        editButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                // Merr emrin e taskut nga teksti në div-in prind
-                const taskText = this.closest('.task').querySelector('.task-text').innerText;
-                // Merr alert time nga atributi data-alert
-                const alertTime = this.closest('.task').dataset.alert;
-                // Merr deadline nga atributi data-deadline
-                const deadline = this.closest('.task').dataset.deadline;
+    // Check if the transformation has already been applied
+    if (!textElement.classList.contains("editing")) {
+        // Save the original content
+        textElement.setAttribute("data-original-content", textElement.textContent);
+        // Clear the content and create an input element
+        textElement.textContent = '';
+        var inputElement = document.createElement("input");
+        inputElement.type = "text";
+        inputElement.value = textElement.getAttribute("data-original-content");
+        inputElement.classList.add("textbox1-input");
+        inputElement.style.border = "none"; // Remove outline
+        inputElement.style.width = "400px"; // Set a custom width
+        inputElement.style.height = "50px"; // Set a custom width
+        inputElement.style.outline = "none";
+        inputElement.style.fontSize = "30px";
+        inputElement.style.backgroundColor = "transparent";
 
-                // Vendos vlerat aktuale në formën e editimit
-                editTaskNameInput.value = taskText;
-                editAlertTimeInput.value = alertTime;
-                editDeadlineInput.value = deadline;
+        // Append the input element to the textElement
+        textElement.appendChild(inputElement);
+        inputElement.focus();
 
-                // Shfaq popup-in e editimit
-                editPopup.style.display = 'block';
+        // Attach event listener for Enter key
+        inputElement.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                // Save the changes
+                textElement.textContent = inputElement.value;
+                textElement.classList.remove("editing");
 
-                // Ruan taskin aktual për të diçka më vonë
-                currentEditTask = this.closest('.task');
-            });
+                // Save tasks to local storage after editing
+                saveTasksToLocalStorage();
+            }
         });
 
-        saveEditButton.addEventListener('click', function () {
-            // Merr vlerat e reja nga forma e editimit
-            const newTaskName = editTaskNameInput.value;
-            const newAlertTime = editAlertTimeInput.value;
-            const newDeadline = editDeadlineInput.value;
+        // Mark the element as editing
+        textElement.classList.add("editing");
+    }
+}
 
-            // Vendos vlerat e reja në task
-            currentEditTask.querySelector('.task-text').innerText = newTaskName;
-            currentEditTask.dataset.alert = newAlertTime;
-            currentEditTask.dataset.deadline = newDeadline;
+document.addEventListener("DOMContentLoaded", function () {
+    // Check local storage for deleted tasks
+    const deletedTasks = JSON.parse(localStorage.getItem('deletedTasks')) || [];
 
-            // Mbyll popup-in e editimit
-            editPopup.style.display = 'none';
-        });
+    // Remove deleted tasks from the DOM
+    deletedTasks.forEach(function (taskId) {
+        const elementToRemove = document.getElementById(taskId);
+        if (elementToRemove) {
+            elementToRemove.remove();
+        }
     });
-</script>
+    
+});
 
+function deleteTask(taskId) {
+    var increaseXP = document.getElementById('xp');
+    console.log('Element:', increaseXP);
+
+    if (increaseXP) {
+        var vleraXP = parseInt(increaseXP.textContent);
+        console.log('Current Value:', vleraXP);
+
+        var VleraRe = vleraXP + 100;
+        increaseXP.textContent = VleraRe;
+        console.log('New Value:', VleraRe);
+    }
+    const elementToRemove = document.getElementById(taskId);
+
+    if (elementToRemove) {
+        alert("Congratulations, you have completed this task and earned 100xp.");
+        elementToRemove.remove();
+
+        // Save tasks to local storage after deleting
+        saveTasksToLocalStorage();
+    }
+}
+
+
+
+    </script>
 
 </body>
 </html>

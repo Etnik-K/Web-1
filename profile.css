@@ -118,18 +118,17 @@ header{
 }
 
 .task{
-    display: flex;
+  display: flex;
 font-size: 30px;
 margin-top: 20px;
-max-width: 760px;
-/* margin-left: 30%; */
+width: 760px;
+margin: auto;
+margin-top: 25px; 
 border: #023047 3px solid;
 border-radius: 50px;
 align-items: center;
 padding: 6px 10px;
-align-self: center;
-margin: auto;
-margin-top: 25px;
+
 }
 .task-images{
     margin-left: auto;
@@ -140,7 +139,13 @@ margin-top: 25px;
 }
 .edit-img{
   transform: scale(1.2);
+  padding: 10px;
 }
+button:hover{
+  cursor:pointer;
+
+}
+
 #container-2{
   display: flex;
   flex-direction: column;
@@ -218,7 +223,7 @@ border-radius: 6px;
   font-size: 30px;
   font-weight: bold;
   text-decoration: none;
-  color: #333;
+  color: #c1bdbd;
 }
 .popup .close:hover {
   color: #023047;
@@ -285,7 +290,9 @@ a{
 #footer-buttons{
   margin-top: 20px;
 }
-
+#addButton:hover{
+  transform: scale(1.2);
+}
 #help-button{
   color: white;
   width: 90px;
@@ -303,6 +310,11 @@ a{
   border: 1px solid #FFB703;
   font-size: 1rem;
   font-weight: 400;
+}
+#completed{
+  height: 40px;
+  width: 40px;
+  background-color: transparent;
 }
 
 #books-title{
