@@ -1,19 +1,26 @@
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Poppins Thin'), local('Poppins-Thin'),
+       url('https://fonts.gstatic.com/s/poppins/v15/pxiEyp8kv8JHgFVrLGT9Z1JlU3eZ7H9FJMgTvxaFZrg.woff2') format('woff2');
+}
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-family: Poppins;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
 }
 #phone-nav{
     display: none;}
 
-#in-process{
-    background-color: #8ECAE6;
-    padding: 100px 0px;
-    z-index: 2;
-}
+    #in-process {
+      background: linear-gradient(135deg, #56CCF2, #2F80ED);
+      padding: 100px 0;
+      z-index: 2;
+  }
 .recommended-paragraph{
     color: #023047;
     font-size: 20px;
@@ -137,14 +144,14 @@ canvas.center {
 }
 
 .challenges {
+  background: radial-gradient(circle, #ff9900, #f8e2b9);
   display: flex;
   flex-direction: column;
   border-radius: 40px;
   margin-top: 30px;
   align-items: center;
   padding: 20px;
-  background-color: #ffffff; /* White background for challenges */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for challenges */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .challenge-status {
@@ -156,7 +163,7 @@ canvas.center {
 .challenge-img-info {
   display: flex;
   align-items: center;
-  background-color: #ffffff; /* White background for challenge-img-info */
+  background: radial-gradient(circle, #ffffff, #f1f1f1);
   margin-top: 20px;
   padding: 15px;
   border-radius: 20px;
@@ -167,6 +174,7 @@ canvas.center {
 
 .challenge-img-info:hover {
   transform: scale(1.1);
+  background: linear-gradient(135deg, #56CCF2, #2F80ED);
 }
 
 .challenge-img-info:hover .challenge-img {
@@ -210,12 +218,12 @@ a {
 #footer-container {
   display: flex;
   justify-content: space-evenly;
-  background-color: #023047;
+  background: linear-gradient(135deg, #023047, #001f38);
   padding: 30px 0;
   flex-wrap: wrap;
   margin-top: 100px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
 #books,
 #explore,
 #gallery,
@@ -264,11 +272,11 @@ a {
 }
 
 .footer-button:hover {
-  background-color: #4d6c86;
+  background: linear-gradient(135deg, #4d6c86, #405c73);
 }
 
 #contact-button {
-  background-color: #ffb703;
+  background: linear-gradient(135deg, #ffb703, #e89f00);
   border: 1px solid #ffb703;
 }
 

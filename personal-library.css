@@ -6,14 +6,20 @@
     margin: 0;
     font-family: Poppins;
 }
+
 #phone-nav{
     display: none;}
 
-#in-process{
-    background-color: #8ECAE6;
-    padding: 100px 0px;
-    z-index: 2;
-}
+    #in-process {
+        background: 
+            linear-gradient(to bottom, #8ECAE6, #5F9EA0), 
+            url('https://via.placeholder.com/1920x1080') center/cover,
+            url('https://via.placeholder.com/800x600') right top/cover;
+        padding: 100px 0px;
+        z-index: 2;
+        color: white;
+        position: relative; /* Needed for z-index to work */
+    }
 .recommended-paragraph{
     color: #023047;
     font-size: 20px;
