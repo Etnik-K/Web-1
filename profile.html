@@ -303,28 +303,28 @@
         saveTasksToLocalStorage();
     }
 });
-
-document.getElementById('addButton').addEventListener('click', function () {
-    // Prompt the user for a new task name
-    const taskName = prompt('Enter the new task name:');
-    if (taskName !== null && taskName.trim() !== '') {
-        // Create a new task with the same structure as existing tasks
+function Task(taskName) {
+    this.taskName = taskName;
+    this.id = '';
+    this.createTaskElement();
+}
+Task.prototype = {
+    createTaskElement: function () {
         const newTask = document.createElement('div');
         newTask.classList.add('task');
 
         // Generate a unique ID for the new task
-        const existingTasks = document.querySelectorAll('.task');
-        const newTaskId = 'task' + (existingTasks.length + 1);
-        newTask.id = newTaskId;
+        this.id = 'task' + (document.querySelectorAll('.task').length + 1);
+        newTask.id = this.id;
 
         // Create the div with ID "textbox" inside the new task
         const textboxDiv = document.createElement('div');
-        textboxDiv.id = 'textbox' + newTaskId.charAt(newTaskId.length - 1);
+        textboxDiv.id = 'textbox' + this.id.charAt(this.id.length - 1);
 
         // Create the paragraph element inside the textboxDiv
         const taskText = document.createElement('p');
-        taskText.id = 'task-text' + newTaskId.charAt(newTaskId.length - 1);
-        taskText.textContent = taskName;
+        taskText.id = 'task-text' + this.id.charAt(this.id.length - 1);
+        taskText.textContent = this.taskName;
 
         // Append the taskText to the textboxDiv
         textboxDiv.appendChild(taskText);
@@ -337,16 +337,14 @@ document.getElementById('addButton').addEventListener('click', function () {
         taskImagesContainer.classList.add('task-images');
 
         // Create the edit button with onclick attribute
-        const editButton = document.createElement('button');
-        editButton.style = "background-color: transparent; border: none;";
-        editButton.setAttribute('onclick', `transformToTextboxTask1('${textboxDiv.id}')`);
-        editButton.innerHTML = '<img src="edit.png" class="edit-img" alt="" title="Edit Task Name" id="edit">';
-
+        const editButton = this.createButton('edit.png', 'Edit Task Name', this.transformToTextboxTask.bind(this, textboxDiv.id));
+            editButton.querySelector('img').style.width = '38px';
+            editButton.querySelector('img').style.height = '38px';
+            editButton.querySelector('img').style.marginRight='10px';
         // Create the remove button with onclick attribute
-        const removeButton = document.createElement('button');
-        removeButton.style = "background-color: transparent; border: none;";
-        removeButton.setAttribute('onclick', `deleteTask('${newTask.id}')`);
-        removeButton.innerHTML = '<img src="clipboard.png" alt="" title="Remove Task" id="completed">';
+        const removeButton = this.createButton('clipboard.png' , 'Remove Task', this.deleteTask.bind(this));
+            removeButton.querySelector('img').style.width = '38px';
+            removeButton.querySelector('img').style.height = '38px';
 
         // Append the editButton and removeButton to taskImagesContainer
         taskImagesContainer.appendChild(editButton);
@@ -358,12 +356,75 @@ document.getElementById('addButton').addEventListener('click', function () {
         // Append the newTask at the bottom of the existing tasks
         const tasksContainer = document.getElementById('tasks');
         tasksContainer.appendChild(newTask);
+    },
 
-        // Save tasks to local storage after adding a new task
-        saveTasksToLocalStorage();
+    createButton: function (imgSrc, title, clickHandler) {
+        const button = document.createElement('button');
+        button.style = "background-color: transparent; border: none; ";
+        button.setAttribute('title', title);
+        button.innerHTML = `<img src="${imgSrc}" alt="" title="${title}" />`;
+        button.addEventListener('click', clickHandler);
+        return button;
+    },
+
+    transformToTextboxTask: function (taskTextID) {
+        const textElement = document.getElementById(taskTextID);
+        textElement.textContent = '';
+
+        if (!textElement.classList.contains("editing")) {
+            textElement.setAttribute("data-original-content", this.taskName);
+
+            const inputElement = document.createElement("input");
+            inputElement.type = "text";
+            inputElement.value = this.taskName;
+            inputElement.classList.add("textbox1-input");
+            inputElement.style = "border: none; width: 400px; height: 50px; outline: none; font-size: 30px; background-color: transparent;";
+
+            textElement.appendChild(inputElement);
+            inputElement.focus();
+
+            inputElement.addEventListener("keydown", (event) => {
+                if (event.key === "Enter") {
+                    this.taskName = inputElement.value;
+                    textElement.classList.remove("editing");
+                    this.saveTasksToLocalStorage();
+                }
+            });
+
+            textElement.classList.add("editing");
+        }
+    },
+
+    deleteTask: function () {
+        const increaseXP = document.getElementById('xp');
+
+        if (increaseXP) {
+            const currentXP = parseInt(increaseXP.textContent);
+            const newXP = currentXP + 100;
+            increaseXP.textContent = newXP;
+        }
+
+        const elementToRemove = document.getElementById(this.id);
+
+        if (elementToRemove) {
+            alert("Congratulations, you have completed this task and earned 100xp.");
+            elementToRemove.remove();
+            this.saveTasksToLocalStorage();
+        }
+    },
+
+    saveTasksToLocalStorage: function () {
+        // Implement the saveTasksToLocalStorage logic
+    }
+};
+
+document.getElementById('addButton').addEventListener('click', function () {
+    const taskName = prompt('Enter the new task name:');
+    if (taskName !== null && taskName.trim() !== '') {
+        const newTask = new Task(taskName);
+        newTask.saveTasksToLocalStorage();
     }
 });
-
 document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.querySelector('.search');
     const suggestionsContainer = document.createElement('div');
