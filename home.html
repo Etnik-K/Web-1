@@ -66,6 +66,9 @@
 </header>
 <div id="lower">
     <div>
+        <video id="video-background" autoplay muted loop>
+        <source src="./Technology Background.mp4" type="video/mp4">
+            </video>
         <h1 id="title">ARE YOU READY <br>
              TO LEARN?</h1>
         <p id="paragraph">Have fun while learning! <br>
@@ -76,7 +79,7 @@
         <img src="./images/reading.png" alt="" id="reading">
 </div>
     </div>
-    <img src="/Meso/images/Line.png" alt="" id="seperation"> 
+ 
 <main id="part2">
 
     <h1 id="categories-title">Categories</h1>
@@ -184,5 +187,26 @@
     });
     let volume = document.getElementById("introSound");
    volume.volume=0.3;
+    
+     // Add the following script to handle the scrolling effect
+ var backgroundVideo = document.getElementById('background-video');
+        var technologyVideo = document.getElementById('video-background');
+
+        window.addEventListener('scroll', function() {
+            var scrolled = window.scrollY;
+            var technologyVideoHeight = technologyVideo.offsetHeight;
+            
+            // Adjust the top position of the technology video based on the scroll position
+            technologyVideo.style.top = scrolled + 'px';
+
+            // If the technology video has reached the next video, adjust the opacity
+            if (scrolled > technologyVideoHeight) {
+                var opacity = 1 - (scrolled - technologyVideoHeight) / 200;
+                technologyVideo.style.opacity = Math.max(0, opacity);
+            } else {
+                // Reset opacity when scrolling back up
+                technologyVideo.style.opacity = 1;
+            }
+        });
 </script>
 </html>
