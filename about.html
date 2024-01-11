@@ -26,7 +26,6 @@
         }
 
         .about-section {
-            background: url(pic.jpg) no-repeat left;
             background-size: 55%;
             background-color: #fdfdfd;
             overflow: hidden;
@@ -156,7 +155,34 @@
     td.highlight2 {
     background-color: #8ECAE6; 
     }
-    
+datalist {
+  display: block;
+  position: absolute;
+}
+
+/* Style for the input inside the datalist */
+input[list] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 200px;
+  position: absolute;
+
+}
+
+/* Style for the dropdown options in the datalist */
+datalist option {
+  padding: 8px;
+  font-size: 14px;
+}
+
+/* Style for the input when it's in focus */
+input[list]:focus {
+  outline: none;
+  border-color: #007bff; 
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+}
 
 
 
@@ -237,8 +263,8 @@
             
                         <form action="#" method="post">
                             <div class="form-group">
-                                <label for="userChoice">Rate us:</label>
-                                <input list="choices" id="userChoice" name="userChoice" oninput="updateOutput()" class="form-control">
+                                <label for="userChoice">Rate us:
+                                <input list="choices" id="userChoice" name="userChoice" oninput="updateOutput()"  style="width: 300px; ">
                                 <datalist id="choices">
                                     <option value="1">
                                     <option value="2">
@@ -246,11 +272,13 @@
                                     <option value="4">
                                     <option value="5">
                                 </datalist>
+                            </label>
                             </div>
             
                             <div class="form-group">
-                                <label for="calculationResult">Thank you for rating us:</label>
-                                <output name="calculationResult" id="calculationResult" class="form-control">0</output>
+                                <label for="calculationResult">Thank you for rating us <b>
+                                <output name="calculationResult" id="calculationResult" >0</output>
+                                </b> stars.</label>
                             </div>
                         </form>
             
@@ -259,9 +287,7 @@
             </div>
             
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-CKWqTtDln5uBk5IlDP5AuB5m/YOOz6v6Zn8TH8eB1lI2z2ZXJghaGCDXwUpJFhM" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyIaZFyP9WOqBByH2KkQOgMz9eNC/fz2N" crossorigin="anonymous"></script>
-            
+          
             <script>
                 function updateOutput() {
                     var userChoice = document.getElementById("userChoice").value;

@@ -15,7 +15,6 @@ body{
 }
  
 .about-section{
-    background: url(pic.jpg) no-repeat left;
     background-size: 55%;
     background-color: #fdfdfd;
     overflow: hidden;
@@ -36,7 +35,9 @@ box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2
     font-size: 30px;
     font-weight: 900;
 }
- 
+.form-group{
+    font-size: x-large;
+}
 .text{
     font-size: 13px;
     color: #545454;
