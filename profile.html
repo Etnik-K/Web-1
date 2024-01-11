@@ -128,19 +128,19 @@
             <p id="task-text1">Task 1</p>
         </div>
         <div class="task-images" >
-        <button style="background-color: transparent; border: none;" onclick="transformToTextboxTask1(task-text1)"><img src="edit.png" class="edit-img" alt="" title="Edit Task Name" id="edit"> </button>  </div>
+        <button style="background-color: transparent; border: none;" onclick="transformToTextboxTask1('task-text1')"><img src="edit.png" class="edit-img" alt="" title="Edit Task Name" id="edit"> </button>  </div>
         <button style="background-color: transparent; border: none;" onclick="deleteTask('task1')"><img src="clipboard.png" alt="" title="Remove Task" id="completed"></button>   
     </div>
     <div class="task" id="task2">
         <p class="task-text2">Task 2</p>
         <div class="task-images">
-            <button style="background-color: transparent; border: none;" onclick="transformToTextboxTask1(task-text2)"><img src="edit.png" class="edit-img" alt="" title="Edit Task Name"> </button>  </div>
+            <button style="background-color: transparent; border: none;" onclick="transformToTextboxTask1('task-text1')"><img src="edit.png" class="edit-img" alt="" title="Edit Task Name"> </button>  </div>
             <button style="background-color: transparent; border: none;" onclick="deleteTask('task2')"><img src="clipboard.png" alt="" title="Remove Task" id="completed"></button> 
     </div>
     <div class="task" id="task3">
         <p class="task-text3">Task 3</p>
         <div class="task-images">
-        <button style="background-color: transparent; border: none;" onclick="transformToTextboxTask1(task-text3)"><img src="edit.png" class="edit-img" alt="" title="Edit Task Name"> </button>  </div>
+        <button style="background-color: transparent; border: none;" onclick="transformToTextboxTask1('task-text1')"><img src="edit.png" class="edit-img" alt="" title="Edit Task Name"> </button>  </div>
         <button style="background-color: transparent; border: none;" onclick="deleteTask('task3')"><img src="clipboard.png" alt="" title="Remove Task" id="completed"></button>
     </div>      
 </div>
@@ -236,8 +236,7 @@
     </div>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            loadTasksFromLocalStorage();
+document.addEventListener('DOMContentLoaded', function () {
     // Load tasks from local storage
     loadTasksFromLocalStorage();
     
@@ -368,31 +367,45 @@ Task.prototype = {
     },
 
     transformToTextboxTask: function (taskTextID) {
-        const textElement = document.getElementById(taskTextID);
+        var textElement = document.getElementById(taskTextID);
+    document.getElementById(taskTextID).textContent = "";
+
+    // Check if the transformation has already been applied
+    if (!textElement.classList.contains("editing")) {
+        // Save the original content
+        textElement.setAttribute("data-original-content", textElement.textContent);
+        // Clear the content and create an input element
         textElement.textContent = '';
+        var inputElement = document.createElement("input");
+        inputElement.type = "text";
+        inputElement.value = textElement.getAttribute("data-original-content");
+        inputElement.classList.add("textbox1-input");
+        inputElement.style.border = "none"; // Remove outline
+        inputElement.style.width = "400px"; // Set a custom width
+        inputElement.style.height = "50px"; // Set a custom width
+        inputElement.style.outline = "none";
+        inputElement.style.fontSize = "30px";
+        inputElement.style.backgroundColor = "transparent";
 
-        if (!textElement.classList.contains("editing")) {
-            textElement.setAttribute("data-original-content", this.taskName);
+        // Append the input element to the textElement
+        textElement.appendChild(inputElement);
+        inputElement.focus();
 
-            const inputElement = document.createElement("input");
-            inputElement.type = "text";
-            inputElement.value = this.taskName;
-            inputElement.classList.add("textbox1-input");
-            inputElement.style = "border: none; width: 400px; height: 50px; outline: none; font-size: 30px; background-color: transparent;";
+        // Attach event listener for Enter key
+        inputElement.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                // Save the changes
+                textElement.textContent = inputElement.value;
+                textElement.classList.remove("editing");
 
-            textElement.appendChild(inputElement);
-            inputElement.focus();
+                // Save tasks to local storage after editing
+                saveTasksToLocalStorage();
+            }
+        });
 
-            inputElement.addEventListener("keydown", (event) => {
-                if (event.key === "Enter") {
-                    this.taskName = inputElement.value;
-                    textElement.classList.remove("editing");
-                    this.saveTasksToLocalStorage();
-                }
-            });
-
-            textElement.classList.add("editing");
-        }
+        // Mark the element as editing
+        textElement.classList.add("editing");
+    }
     },
 
     deleteTask: function () {
