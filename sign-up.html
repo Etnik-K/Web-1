@@ -4,25 +4,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="sign-up.css">
     <title>Sign up</title>
     <link rel="shortcut icon" type="image" href="logo.png">
-    <script src="singup-js.js"></script>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="signup-js.js"></script>
+    <style>
+        
+        .col-lg-5{
+            padding-top: 10%;
+            
+        }
+       .img-fluid{
+        
+        position: absolute;
+       }
+       #image{
+        height: 900px;
+        padding-top: 10%;
+       }
+    </style>
 </head>
 <body>
-    <div id="sign-up-container">
-        <img src="education 1.png" alt="" id="image">
-        <form action="" method="get" id="form">
-            <h1 id="title">Sign up Form</h1>
-            <input type="email" name="" id="email" placeholder="Email address">
-            <input type="password" name="" id="password" placeholder="Create Password">
-            <input type="password" name="" id="confirmPassword" placeholder="Confirm Password">
-            
-            <div id="end-part">
-                <input type="button" value="Sign up" id="button" onclick="validatePassword()">
-                <p id="last-paragraph">Already have an account? <a href="login.html" id="sign-up">Log in.</a></p>
-            </div>    
-        </form>
+    <div class="container-fluid" >
+        <div class="row ">
+            <div class="col-lg-7 d-lg-flex align-items-center">
+                <img src="education 1.png" alt="" class="img-fluid" id="image">
+            </div>
+            <div class="col-lg-5">
+                <form action="" method="get" class="p-5" id="form" >
+                    <h1 class="text-dark mb-4">Sign up Form</h1>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email" placeholder="Email address">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password" placeholder="Create Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="button" value="Sign up" class="btn btn-warning btn-block" onclick="validatePassword()">
+                    </div>
+                    <p class="text-dark">Already have an account? <a href="login.html" class="text-warning">Log in.</a></p>
+                </form>
+            </div>
+        </div>
     </div>
+
+    <!-- Include Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

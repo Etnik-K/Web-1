@@ -5,25 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="login.css">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="shortcut icon" type="image" href="logo.png">
+    <style>
+        #image{
+            width: 35%;
+            height: 100%;
+        }
+        .p-5{
+            width: 500px;
+        }
+    </style>
 </head>
 <body>
-    <div id="login-container">
-        <form action="" method="get" id="form">
-            <h1 id="title">Login Form</h1>
-            <input type="email" name="" id="email" placeholder="Email address">
-            <input type="password" name="" id="password" placeholder="Password">
-            <a href="" id="forgot-password">Forgot Password?</a>
-            <div id="end-part">
-                <input type="button" value="Login" id="button" onclick="validateLogin()">
-                <p id="last-paragraph">Not a member? <a href="sign-up.html" id="sign-up">Sign up now.</a></p>
+    <div class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <form action="" method="get" class="p-5" id="form">
+            <h1 class="text-dark mb-4">Login Form</h1>
+            <div class="form-group">
+                <input type="email" class="form-control" id="email" placeholder="Email address">
             </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <a href="" id="forgot-password" class="text-warning">Forgot Password?</a>
+            <div class="form-group">
+                <input type="button" value="Login" class="btn btn-warning btn-block" onclick="validateLogin()">
+            </div>
+            <p class="text-dark">Not a member? <a href="sign-up.html" class="text-warning">Sign up now.</a></p>
         </form>
-        <img src="education 1.png" alt="" id="image">
+        <img src="education 1.png" alt="" id="image" class="img-fluid">
     </div>
 
-    
+    <!-- Include Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <script>
         const usersData = {
             "users": [
@@ -68,6 +86,5 @@
             }
         }
     </script>
-    
 </body>
 </html>
