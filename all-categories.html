@@ -7,6 +7,7 @@
     <title>All Categories</title>
     <link rel="stylesheet" href="all-categories.css">
     <link rel="shortcut icon" type="image" href="logo.png">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
     <nav id="phone-nav">
@@ -19,12 +20,12 @@
                 <span class="line line3"></span>
               </div>  
             <div class="logo">
-              <img src=".logo.png" alt="">
+              <img src="logo.png" alt="">
             </div>
             <div class="menu-items">
               <li><a href="login.html">Login</a></li>
               <li><a href="about.html">About</a></li>
-              <li><a target="_blank" href="search.html">Search</a></li>
+              
 
             
             </div>
@@ -37,18 +38,6 @@
         <a href="home.html" id="logo"><img src="logo.png" alt=""></a>
             <nav>
                 <ul class="nav_links">
-                     <li><div class="boxContainer">
-                        <table class="elementsContainer">
-                         <tr>
-                             <td>
-                                 <input type="text" name="" class="search" placeholder="Search course...">
-                             </td>
-                             <td>
-                              <a href="#"><img src="loupe 1.png" alt="" class="material-icons"></a>
-                             </td>
-                         </tr>
-                        </table>
-                    </div></li>
                     <li><a class="nav-link" href="login.html">Login</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
         
@@ -152,6 +141,20 @@
                     });
                 });
             </script>
+             <script>
+                function goContact() {
+                    window.location.href = "contact.html";
+                }
+            </script>
+        
+            <script>
+                // Ndryshon dukshmërinë e menysë së navigimit kur klikohet ikona e hamburgerit.
+                $(document).ready(function() {
+                    $('.checkbox').click(function() {
+                        $('.menu-items').toggleClass('show');
+                    });
+                });
+            </script>
 <script>
    // Adds smooth scrolling to navigate to different sections when clicking on navigation links.
     $(document).ready(function() {
@@ -244,7 +247,7 @@
     $(document).ready(function() {
         // jQuery to get and set HTML content
         var titleText = $('#title').text(); // Get the text content of the element with ID 'title'
-        $('#title').text(titleText + ' - Updated'); // Set a new text content
+        $('#title').text(titleText + ''); // Set a new text content
 
         // jQuery to add and remove classes
         $('#title').addClass('highlight'); // Add a class
