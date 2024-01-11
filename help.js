@@ -1,6 +1,6 @@
 
     function callHelp() {
-        window.location.href = 'tel:+1234567890';
+        window.location.href = 'tel:+38345225394';
     }
 
     $(document).ready(function() {
