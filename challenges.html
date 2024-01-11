@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyIOBkV6zCkgS+K8tfg8eBvEm++bA0I/1j" crossorigin="anonymous">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
 
@@ -16,17 +14,17 @@
         document.addEventListener("DOMContentLoaded", function () {
             // Mock data for ongoing and completed challenges
             const ongoingChallengesData = [
-                { imgSrc: "./images/challenge-1.png", title: "Challenge Title 1" },
-                { imgSrc: "./images/challenge-2.png", title: "Challenge Title 2" },
-                { imgSrc: "./images/challenge-3.png", title: "Challenge Title 3" },
-                { imgSrc: "./images/challenge-4.png", title: "Challenge Title 4" },
+                { imgSrc: "challenge-1.png", title: "Challenge Title 1" },
+                { imgSrc: "challenge-2.png", title: "Challenge Title 2" },
+                { imgSrc: "challenge-3.png", title: "Challenge Title 3" },
+                { imgSrc: "challenge-4.png", title: "Challenge Title 4" },
             ];
 
             const completedChallengesData = [
-                { imgSrc: "./images/challenge-5.png", title: "Challenge Title 5" },
-                { imgSrc: "./images/challenge-6.png", title: "Challenge Title 6" },
-                { imgSrc: "./images/challenge-7.png", title: "Challenge Title 7" },
-                { imgSrc: "./images/challenge-8.png", title: "Challenge Title 8" },
+                { imgSrc: "challenge-5.png", title: "Challenge Title 5" },
+                { imgSrc: "challenge-6.png", title: "Challenge Title 6" },
+                { imgSrc: "challenge-7.png", title: "Challenge Title 7" },
+                { imgSrc: "challenge-8.png", title: "Challenge Title 8" },
             ];
 
             function renderChallenges(challengeList, challengesData) {
@@ -53,7 +51,6 @@
                         alert("100% completed");
                     });
 
-                    challengeListElement.appendChild(challengeItem);
                 });
             }
 
@@ -230,21 +227,11 @@
        
         function ongoing100(){
             alert("Congratulations, 100% Completed.");
-        }        
-        document.addEventListener("DOMContentLoaded", function () {
-            const challengeButtons = document.querySelectorAll(".challenge-img-info");
-
-            challengeButtons.forEach(button => {
-                button.addEventListener("click", function () {
-                    const completion = button.getAttribute("data-completion");
-                    alert(completion + "% Completed.");
-                });
-                setTimeout(function () {
+            setTimeout(function () {
                         alert("This message will appear after a timeout!");
-                    }, 200000000000000); // 2000 milliseconds (2 seconds) timeout
-            });
-            
-        });
+                    }, 2000);
+        }        
+       
 
             
     </script>
