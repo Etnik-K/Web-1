@@ -162,7 +162,7 @@
         var inputElementBD;
         var bdTransformed = false;
         
-        // Load saved data from localStorage when the page loads
+        
         window.onload = function () {
            
             loadUserData();
@@ -180,7 +180,7 @@
             inputElementUsr.focus();
             usrTransformed = true;
         
-            // Attach event listener for Save Changes button
+            
             document.getElementById("save").addEventListener("click", saveChanges);
         }
         
@@ -196,7 +196,7 @@
             inputElementFN.focus();
             fnTransformed = true;
         
-            // Attach event listener for Save Changes button
+            
             document.getElementById("save").addEventListener("click", saveChanges);
         }
         
@@ -212,7 +212,7 @@
             inputElementEmail.focus();
             emailTransformed = true;
         
-            // Attach event listener for Save Changes button
+            
             document.getElementById("save").addEventListener("click", saveChanges);
         }
         
@@ -228,7 +228,7 @@
             inputElementTel.focus();
             telTransformed = true;
         
-            // Attach event listener for Save Changes button
+            
             document.getElementById("save").addEventListener("click", saveChanges);
         }
         
@@ -244,25 +244,25 @@
             inputElementBD.focus();
             bdTransformed = true;
         
-            // Attach event listener for Save Changes button
+            
             document.getElementById("save").addEventListener("click", saveChanges);
         }
         
         function saveChanges() {
-            // Retrieve the values from the input elements
+            
             var inputValueUsr = inputElementUsr ? inputElementUsr.value : "";
             var inputValueFN = inputElementFN ? inputElementFN.value : "";
             var inputValueEmail = inputElementEmail ? inputElementEmail.value : "";
             var inputValueTel = inputElementTel ? inputElementTel.value : "";
             var inputValueBD = inputElementBD ? inputElementBD.value : "";
         
-            // Save data to localStorage
+            
             saveUserData(inputValueUsr, inputValueFN, inputValueEmail, inputValueTel, inputValueBD);
         
-            // Reset the entire container to its original state
+            
             document.getElementById("container").innerHTML = originalState;
         
-            // Update the value of the paragraph if the input is not empty
+            
             if (inputValueUsr.trim() !== "") {
                 document.getElementById("username1").textContent = inputValueUsr;
             }
@@ -280,7 +280,7 @@
             }
         }
         
-        // Save data to localStorage
+        
         function saveUserData(username, fullname, email, phonenumber, birthdate) {
             localStorage.setItem("savedUsername", username);
             localStorage.setItem("savedFullname", fullname);
@@ -289,7 +289,7 @@
             localStorage.setItem("savedBirthdate", birthdate);
         }
         
-        // Load data from localStorage and update the UI
+        
         function loadUserData() {
             document.getElementById("username1").textContent = localStorage.getItem("savedUsername") || "Username";
             document.getElementById("fullname1").textContent = localStorage.getItem("savedFullname") || "Full Name";
@@ -298,48 +298,46 @@
             document.getElementById("bd1").textContent = localStorage.getItem("savedBirthdate") || "Birthdate";
         }
     document.getElementById("confirm").addEventListener("click", function () {
-        // Get the old, new, and confirm password elements
+        
         var oldPasswordElement = document.getElementById("old-password");
         var newPasswordElement = document.getElementById("new-password");
         var confirmPasswordElement = document.getElementById("confirm-password");
 
-        // Get the values entered by the user
+        
         var oldPassword = oldPasswordElement.value;
         var newPassword = newPasswordElement.value;
         var confirmPassword = confirmPasswordElement.value;
 
-        // Check if the new password and confirm password match
+        
         if (newPassword !== confirmPassword) {
-            // Display a warning if passwords don't match
+            
             document.getElementById("password-warning").textContent = "Passwords do not match!";
             document.getElementById("password-warning").style.color = "red";
         } else {
-            // Clear the warning message
+            
             document.getElementById("password-warning").textContent = "";
 
-            // Update the old password with the new password
+            
             oldPasswordElement.value = newPassword;
-            // You can perform additional actions or submit the form here
-
-            // Optionally, reset the new and confirm password fields
+         
             newPasswordElement.value = "";
             confirmPasswordElement.value = "";
             oldPasswordElement.value="";
         }
     });
     function DeleteAccount() {
-        // Ask the user for confirmation before deleting the account
+        
         var confirmDelete = confirm("Are you sure you want to delete your account? This action cannot be undone.");
 
-        // If the user confirms, proceed with the deletion
+        
         if (confirmDelete) {
-            // Save the original state to localStorage
+            
             localStorage.setItem("originalState", originalState);
 
-            // Reset the entire container to its original state
+            
             document.getElementById("container").innerHTML = originalState;
 
-            // Clear the saved user data in localStorage
+            
             localStorage.setItem("savedUsername", "Username");
             localStorage.setItem("savedFullname", "Full Name");
             localStorage.setItem("savedEmail", "Email");
