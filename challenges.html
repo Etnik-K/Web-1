@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="challenges.css">
     <title>Challenges</title>
     <link rel="shortcut icon" type="image" href="logo.png">
+     <script src="help.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Mock data for ongoing and completed challenges
+            
             const ongoingChallengesData = [
                 { imgSrc: "challenge-1.png", title: "Challenge Title 1" },
                 { imgSrc: "challenge-2.png", title: "Challenge Title 2" },
@@ -70,7 +71,7 @@
             styleElement.textContent = challengesTitleCSS;
             document.head.appendChild(styleElement);
 
-            // Draw text on the canvas
+            
             challengesTitleCtx.font = "50px Poppins"; // Adjust font size as needed
             challengesTitleCtx.fillStyle = "#023047"; // Text color
             challengesTitleCtx.textAlign = "center";
