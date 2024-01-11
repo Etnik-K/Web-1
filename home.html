@@ -151,11 +151,21 @@
     
 </body>
 <script>
+    // Function to play sound after user interaction
     function playSound(soundId) {
         var sound = document.getElementById(soundId);
-        sound.play();
+
+        // Play the sound only if the user has interacted with the document
+        document.addEventListener('click', function() {
+            sound.play().then(function() {
+                // Sound played successfully
+            }).catch(function(error) {
+                console.error('Error playing sound:', error);
+            });
+        }, { once: true });
     }
 
+    // Function to play sound and navigate after sound ends
     function playSoundAndNavigate(soundId, destination) {
         var sound = document.getElementById(soundId);
 
@@ -163,13 +173,40 @@
             window.location.href = destination;
         });
 
-        sound.play();
+        // Play the sound only if the user has interacted with the document
+        document.addEventListener('click', function() {
+            sound.play().then(function() {
+                // Sound played successfully
+            }).catch(function(error) {
+                console.error('Error playing sound:', error);
+            });
+        }, { once: true });
     }
 
-    
+    // Your other script content here
+
+    // Event listener for the 'Get Started' button
+    document.getElementById('get-started-button').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        playSoundAndNavigate('buttonSound', 'login.html');
+    });
+
+    // Event listener for the 'Learn More' button
+    document.getElementById('learnmore').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        playSoundAndNavigate('buttonSound', 'learnmore.html');
+    });
+
+    // Event listener for the 'View All Categories' button
+    document.getElementById('view-all').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        playSoundAndNavigate('buttonSound', 'all-categories.html');
+    });
+
+    // Event listener to play intro sound on page load
     window.addEventListener('load', function() {
-            playSound('introSound');
-        });
+        playSound('introSound');
+    });
 
     document.getElementById('get-started-button').addEventListener('click', function(event) {
         event.preventDefault(); 
@@ -208,5 +245,33 @@
                 technologyVideo.style.opacity = 1;
             }
         });
+
+        //Trajtimi i gabimit
+        document.getElementById('learnmore').addEventListener('click', function(event) {
+    event.preventDefault();
+    playSoundAndNavigate('buttonSound', 'learnmore.html');
+});
+
+document.getElementById('view-all').addEventListener('click', function(event) {
+    event.preventDefault();
+    playSoundAndNavigate('buttonSound', 'all-categories.html');
+});
+
+document.getElementById('get-started-button').addEventListener('click', function(event) {
+    event.preventDefault();
+    playSoundAndNavigate('buttonSound', 'login.html');
+});
+
+document.getElementById('learnmore').addEventListener('click', function(event) {
+    event.preventDefault();
+    // Ensure that the audio is played only on user interaction
+    var introSound = document.getElementById('introSound');
+    introSound.play().then(function() {
+        playSoundAndNavigate('buttonSound', 'learnmore.html');
+    }).catch(function(error) {
+        console.error('Error playing sound:', error);
+    });
+});
+
 </script>
 </html>
